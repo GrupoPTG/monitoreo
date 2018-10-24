@@ -31,7 +31,7 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">USUARIOS</a>
+                    <a class="nav-link active" href="index.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="cliente.html">CLIENTES</a>
@@ -291,12 +291,41 @@ include("menu.php");
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <br><br>
 Lista de Usuarios Creados
-
+-->
 
 <?php
-
+/*
 
 require_once("../modelo/connect.php");
 
@@ -354,7 +383,8 @@ require_once("../modelo/connect.php");
 
 							?>
 								</div>
-							<?php
+                            <?php
+                            */
 ?>
 
     <script src="../js/jquery.min.js"></script>
