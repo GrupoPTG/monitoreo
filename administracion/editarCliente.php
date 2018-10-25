@@ -356,10 +356,10 @@ $fila=$resultado->fetch_assoc();
     $dirCliente=$_POST['direccion'];
     //$pais=$_POST['pais'];
     //$idioma=$_POST['idioma'];
-    $contratoInicio="inicioContrato";
-    $contratoFin="finContrato";
-    $contrato="numeroContrato";
-    $descripContrato="descripcionCliente";
+    $contratoInicio= $_POST['inicioContrato'];
+    $contratoFin=$_POST['finContrato'];
+     $contrato=$_POST['numeroContrato'];
+    $descripContrato=$_POST['descripcionCliente'];
 
 
     
@@ -374,7 +374,14 @@ $fila=$resultado->fetch_assoc();
     $actualizarUsuario = "UPDATE usuarios SET 
     cliente='$nombreCliente',
     pass='$pass',
-    direccion='$dirCliente'
+    direccion='$dirCliente',
+    emailCliente='$emailCliente',
+    usuario='$usuario',
+    inicioContrato='$contratoInicio',
+    finContrato='$contratoFin',
+    numero_contrato='$contrato',
+    descripcion='$descripContrato'
+
     WHERE id=$idUsuario";
   
     
@@ -392,6 +399,7 @@ $fila=$resultado->fetch_assoc();
         $contactName = $nombreContacto[$i];
         $contactEmail= $nombreCorreo[$i];
         $contactTelef= $nombreTelefono[$i];
+        $contactCargo= $nombreCargo[$i];
   
         
   
@@ -400,7 +408,8 @@ $fila=$resultado->fetch_assoc();
           '$idUsuario',
           '$contactName',
           '$contactEmail',
-          '$contactTelef'
+          '$contactTelef',
+          '$contactCargo'
           )";
     
         $regitrarContacto = $conexion->query($registrarContacto);
