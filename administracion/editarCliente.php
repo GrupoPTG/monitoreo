@@ -66,8 +66,50 @@ include("menu.php");
     </div>
 
 
+
+
+
+
+
+
+
+<?php
+
+$usuario = $_POST['idUser'];
+require_once("../modelo/connect.php");
+
+$sql = "SELECT * FROM usuarios WHERE id='$usuario'";
+$resultado = $conexion->query($sql);
+$fila=$resultado->fetch_assoc();
+	 
+     $cliente =$fila['cliente'];
+     $email =$fila['emailCliente'];
+     $usuario =$fila['usuario'];
+     $pass =$fila['pass'];
+     $direccion =$fila['direccion'];
+     $pais =$fila['pais'];
+     $idioma =$fila['idioma'];
+     $inicioContrato =$fila['inicioContrato'];
+     $finContrato =$fila['finContrato'];
+     $numContrato=$fila['numero_contrato'];
+     $descripcion=$fila['descripcion'];
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
   <section class="user-create container">
-    <h1 class="user-text text-center">CREAR USUARIO CLIENTE</h1>
+    <h1 class="user-text text-center">EDITAR USUARIO CLIENTE</h1>
     <form method="post" action="#" id="resetear" >
         <div class="row my-5">
             <h5>DATOS DEL CLIENTE</h5>
@@ -77,7 +119,7 @@ include("menu.php");
 
                 <p>Nombre del Cliente</p>
                 <div class="input-group mb-3">
-                    <input type="text"  class="form-control"  name="cliente" required>
+                    <input type="text"  class="form-control"  name="cliente" value="<?php echo $cliente; ?>" required>
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -85,7 +127,7 @@ include("menu.php");
 
                 <p>Correo Electrónico</p>
                 <div class="input-group mb-3">
-                    <input type="email"  class="form-control"  name="correoElectronico" required>
+                    <input type="email"  class="form-control"  name="correoElectronico" value="<?php echo $email; ?>">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -138,7 +180,7 @@ include("menu.php");
 
                 <p>Usuario</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control"  name="usuario" required>
+                    <input type="text" class="form-control"  name="usuario" value="<?php echo $usuario; ?>">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -146,7 +188,7 @@ include("menu.php");
 
                 <p>Dirección</p>
                 <div class="input-group">
-                    <textarea class="form-control hgarea" type="text" aria-label="With textarea" name="direccion" required></textarea>
+                    <textarea class="form-control hgarea" type="text" aria-label="With textarea" name="direccion"><?php echo $direccion; ?></textarea>
                     <div class="input-group-prepend">
                         <span class="input-group-text">* </span>
                     </div>
@@ -207,13 +249,13 @@ include("menu.php");
                 
                 <p>Número de contrato</p>
                 <div class="input-group mb-3">
-                    <input type="text"  class="form-control" name="numeroContrato" >
+                    <input type="text"  class="form-control" name="numeroContrato" value="<?php echo $numContrato; ?>">
                 </div>
                 
                 <div class="row">
                     <div class="col-md-6">
                         <p>Fecha de Inicio</p>
-                        <input type="text" name="inicioContrato" class="tcal" value="" />
+                        <input type="text" name="inicioContrato" class="tcal" value="<?php echo $inicioContrato; ?>" />
                         <!--
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" >
@@ -224,7 +266,7 @@ include("menu.php");
                     </div>
                     <div class="col-md-6">
                         <p>Fecha de Culminación</p>
-                        <input type="text" name="finContrato" class="tcal" value="" />
+                        <input type="text" name="finContrato" class="tcal" value="<?php echo $finContrato; ?>" />
                         <!--
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" >
@@ -251,7 +293,7 @@ include("menu.php");
             <div class="col-md-6">
                 <p>Descripción</p>
                 <div class="input-group">
-                    <textarea class="form-control hgarea" aria-label="With textarea" name="descripcionCliente"></textarea>
+                    <textarea class="form-control hgarea" aria-label="With textarea" name="descripcionCliente"><?php echo $descripcion; ?></textarea>
                 </div>
             </div>
     
@@ -278,15 +320,98 @@ include("menu.php");
     -->
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
-                <button class="btn btn-send btn-col1 m-1" type="submit" name="registrarCliente">CREAR</button>
+                <input type="hidden" value="<?php echo $usuario?>" name="">
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">CREAR</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
         </div>
     </form>
   </section>
 
+
+
+
+
+
+
 <?php
-  require_once("../controlador/registroUsuario.php");
+
+ if(isset($_POST['editarCliente'])){
+
+
+    $idUsuario= $_POST['idUsuario']; //revisar si hay input hidden
+    $nombreCliente= $_POST['cliente'];
+    $emailCliente=$_POST['email'];
+    $pass=$_POST['pass'];
+    $dirCliente=$_POST['direccion'];
+    //$pais=$_POST['pais'];
+    //$idioma=$_POST['idioma'];
+    $contratoInicio="";
+    $contratoFin="";
+    $contrato="";
+    $descripContrato="";
+
+
+    //Crear las variables del formulario editar
+    /*
+    $usuario =$fila['usuario'];
+    $pass =$fila['pass'];
+    $direccion =$fila['direccion'];
+    $pais =$fila['pais'];
+    $idioma =$fila['idioma'];
+    $inicioContrato =$fila['inicioContrato'];
+    $finContrato =$fila['finContrato'];
+    $numContrato=$fila['numero_contrato'];
+    $descripcion=$fila['descripcion'];
+    /*
+    
+    
+    $nombreContacto = $_POST['nombreContacto'];
+    $nombreCorreo = $_POST['nombreCorreo'];
+    $nombreTelefono = $_POST['nombreTelefono'];
+    $nombreCargo = $_POST['cargo'];
+    
+  
+  
+  
+    $actualizarUsuario = "UPDATE usuarios SET 
+    cliente='$nombreCliente',
+    pass='$pass',
+    direccion='$dirCliente',
+    pais='$pais',
+    idioma='$idioma'
+    WHERE id=$idUsuario";
+  
+    
+    //Consulta Actualizar Usuario
+    if($conexion->query($actualizarUsuario)!==False){
+        echo "El Usuario fue actualizado con exito";
+    }else{
+        echo "El Usuario no fue actualizado por favor consulte con el administrador";
+    }  
+  
+    
+
+    for($i=0; $i<sizeof($nombreContacto); ++$i){
+
+        $contactName = $nombreContacto[$i];
+        $contactEmail= $nombreCorreo[$i];
+        $contactTelef= $nombreTelefono[$i];
+  
+        
+  
+        $registrarContacto = "INSERT INTO contactos VALUES (
+          '',
+          '$idUsuario',
+          '$contactName',
+          '$contactEmail',
+          '$contactTelef'
+          )";
+    
+        $regitrarContacto = $conexion->query($registrarContacto);
+      }
+    
+  }
 ?>
 
 

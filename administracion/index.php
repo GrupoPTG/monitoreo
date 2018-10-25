@@ -58,7 +58,7 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                    <a class="nav-link" href="editUser.php">EDITAR USUARIO</a>
                 </li>
 
             </ul>
@@ -85,7 +85,7 @@ include("menu.php");
 
                 <p>Correo Electrónico</p>
                 <div class="input-group mb-3">
-                    <input type="email"  class="form-control"  name="direccion" required>
+                    <input type="email"  class="form-control"  name="correoElectronico" required>
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -138,7 +138,7 @@ include("menu.php");
 
                 <p>Usuario</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control"  name="email" required>
+                    <input type="text" class="form-control"  name="usuario" required>
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>

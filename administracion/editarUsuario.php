@@ -53,6 +53,11 @@ $fila=$resultado->fetch_assoc();
 
 
 
+
+
+
+
+
 <?php
  // require_once("../controlador/registroUsuario.php");
 
@@ -113,6 +118,17 @@ $fila=$resultado->fetch_assoc();
       }
     
   }else{
+
+
+
+
+
+
+
+
+
+
+
       ?>
 
       <form  method="post" action="#">
