@@ -6,13 +6,16 @@ $registrarUsuario = "INSERT INTO usuarios VALUES (
 	'',
 	'$nombreCliente',
 	'$emailCliente',
+	'$usuarioCliente',
 	'$cad',
 	'$dirCliente',
 	'$pais',
 	'$idioma',
 	'$inicioContrato',
 	'$finContrato',
-    '$estatus'
+    '$estatus',
+	'$numeroContrato',
+	'$descripcion'
 	)";
 
 

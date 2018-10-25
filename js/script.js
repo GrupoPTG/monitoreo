@@ -2,8 +2,10 @@
 var numIdContacto=1;
 
 function agregarContacto(){
+
     var aggInput = document.getElementById("formularioCliente");
     var mybr = document.createElement('br');
+    
 
 
     numIdContacto++;
@@ -23,9 +25,18 @@ function agregarContacto(){
     inputTelefono.name = 'nombreTelefono[]';
     inputTelefono.placeholder = 'Telefono';
 
+    
+    var inputCargo = document.createElement("INPUT");         
+    inputCargo.type = 'text';
+    inputCargo.name = 'cargo[]';
+    inputCargo.placeholder = 'Cargo';
+    
+
+   
     aggInput.appendChild(inputName);
     aggInput.appendChild(inputEmail);
     aggInput.appendChild(inputTelefono);
+    aggInput.appendChild(inputCargo);
     aggInput.appendChild(mybr);
 }
 

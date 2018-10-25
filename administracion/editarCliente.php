@@ -84,7 +84,7 @@ $fila=$resultado->fetch_assoc();
 	 
      $cliente =$fila['cliente'];
      $email =$fila['emailCliente'];
-     $usuario =$fila['usuario'];
+     $usuarioCliente =$fila['usuario'];
      $pass =$fila['pass'];
      $direccion =$fila['direccion'];
      $pais =$fila['pais'];
@@ -180,7 +180,15 @@ $fila=$resultado->fetch_assoc();
 
                 <p>Usuario</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control"  name="usuario" value="<?php echo $usuario; ?>">
+                    <input type="text" class="form-control"  name="usuarioCliente" value="<?php echo $cliente; ?>">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">*</span>
+                    </div>
+                </div>
+
+                <p>Password</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"  name="pass" value="<?php echo $pass; ?>">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -216,20 +224,20 @@ $fila=$resultado->fetch_assoc();
             </div>
     -->
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  required>
+                <input type="text"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" required>
+                <input type="text"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" required>
+                <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
@@ -320,11 +328,12 @@ $fila=$resultado->fetch_assoc();
     -->
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
-                <input type="hidden" value="<?php echo $usuario?>" name="">
+                <input type="hidden" value="<?php echo $usuario?>" name="idUser">
                 <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">CREAR</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
         </div>
+
     </form>
   </section>
 
@@ -339,32 +348,20 @@ $fila=$resultado->fetch_assoc();
  if(isset($_POST['editarCliente'])){
 
 
-    $idUsuario= $_POST['idUsuario']; //revisar si hay input hidden
+    echo $idUsuario= $_POST['idUser']; 
     $nombreCliente= $_POST['cliente'];
-    $emailCliente=$_POST['email'];
+    $emailCliente=$_POST['correoElectronico'];
+    $usuario= $_POST['usuarioCliente'];
     $pass=$_POST['pass'];
     $dirCliente=$_POST['direccion'];
     //$pais=$_POST['pais'];
     //$idioma=$_POST['idioma'];
-    $contratoInicio="";
-    $contratoFin="";
-    $contrato="";
-    $descripContrato="";
+    $contratoInicio="inicioContrato";
+    $contratoFin="finContrato";
+    $contrato="numeroContrato";
+    $descripContrato="descripcionCliente";
 
 
-    //Crear las variables del formulario editar
-    /*
-    $usuario =$fila['usuario'];
-    $pass =$fila['pass'];
-    $direccion =$fila['direccion'];
-    $pais =$fila['pais'];
-    $idioma =$fila['idioma'];
-    $inicioContrato =$fila['inicioContrato'];
-    $finContrato =$fila['finContrato'];
-    $numContrato=$fila['numero_contrato'];
-    $descripcion=$fila['descripcion'];
-    /*
-    
     
     $nombreContacto = $_POST['nombreContacto'];
     $nombreCorreo = $_POST['nombreCorreo'];
@@ -377,9 +374,7 @@ $fila=$resultado->fetch_assoc();
     $actualizarUsuario = "UPDATE usuarios SET 
     cliente='$nombreCliente',
     pass='$pass',
-    direccion='$dirCliente',
-    pais='$pais',
-    idioma='$idioma'
+    direccion='$dirCliente'
     WHERE id=$idUsuario";
   
     

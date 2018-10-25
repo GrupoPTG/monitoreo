@@ -23,7 +23,8 @@ if(isset($_POST['registrarCliente'])){
 
     
     $nombreCliente= $_POST['cliente'];
-    $emailCliente=$_POST['email'];
+    $emailCliente=$_POST['correoElectronico'];
+    $usuarioCliente=$_POST['usuario'];
     $dirCliente=$_POST['direccion'];
     $pais=$_POST['pais'];
     $idioma=$_POST['idioma'];
@@ -32,7 +33,11 @@ if(isset($_POST['registrarCliente'])){
     $nombreContacto = $_POST['nombreContacto'];
     $nombreCorreo = $_POST['nombreCorreo'];
     $nombreTelefono = $_POST['nombreTelefono'];
+    $nombreCargo = $_POST['cargo'];
     $estatus="Activo";
+    $numeroContrato=$_POST['numeroContrato'];
+    $descripcion=$_POST['descripcionCliente'];
+    
 
 
 
@@ -60,6 +65,7 @@ if(isset($_POST['registrarCliente'])){
       $contactName = $nombreContacto[$i];
       $contactEmail= $nombreCorreo[$i];
       $contactTelef= $nombreTelefono[$i];
+      $contactCargo= $nombreCargo[$i];
 
       
 
@@ -68,7 +74,8 @@ if(isset($_POST['registrarCliente'])){
         '$usuarioId',
         '$contactName',
         '$contactEmail',
-        '$contactTelef'
+        '$contactTelef',
+        '$contactCargo'
         )";
   
       $regitrarContacto = $conexion->query($registrarContacto);
