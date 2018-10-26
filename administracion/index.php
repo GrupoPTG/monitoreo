@@ -34,7 +34,7 @@ include("menu.php");
                     <a class="nav-link active" href="#">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
+                    <a class="nav-link " href="#">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
@@ -53,7 +53,7 @@ include("menu.php");
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
+                        <a class="dropdown-item"  href="index.php">CLIENTE</a>
                         <a class="dropdown-item" href="crearVendedor.php">VENDEDOR</a>
                     </div>
                 </li>
@@ -212,26 +212,26 @@ include("menu.php");
                 
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Fecha de Inicio</p>
+                        <p>Fecha de Inicio</p><!--
                         <input type="text" name="inicioContrato" class="tcal" value="" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" >
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="date"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p>Fecha de Culminación</p>
+                        <p>Fecha de Culminación</p><!--
                         <input type="text" name="finContrato" class="tcal" value="" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" >
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="text"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div> -->
+                        </div> 
                     </div>
                     <!--
                     <p>Vendedor</p>
@@ -358,6 +358,7 @@ require_once("../modelo/connect.php");
 ?>
 
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script>

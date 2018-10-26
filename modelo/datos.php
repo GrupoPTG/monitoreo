@@ -4,7 +4,7 @@
 	$server= "localhost";
 	$bd = "monitoreo_bd";
 	$user= "root";
-	$pass = "";
+	$pass = "root";
 
 /*
 

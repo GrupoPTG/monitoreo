@@ -63,7 +63,9 @@ header img { margin: 40px; }
 
 .box-img-cont { margin: 30px auto; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
 
-.input-right { width: 223px !important; margin-right: 40px; }
+.box1 { width: 220px !important; margin: 15px 20px 15px 4px; }
+
+.box2 { width: 220px !important; margin: 15px 19px; }
 
 .box-vend { border: 1px solid #bcbec0; }
 

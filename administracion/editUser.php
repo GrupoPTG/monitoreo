@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/tcal.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
 </head>
@@ -34,7 +34,7 @@ include("menu.php");
                     <a class="nav-link active" href="index.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
+                    <a class="nav-link " href="#">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
@@ -54,11 +54,11 @@ include("menu.php");
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
+                        <a class="dropdown-item" href="crearVendedor.php">VENDEDOR</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">EDITAR USUARIO</a>
+                    <a class="nav-link active" href="editUser.php">EDITAR USUARIO</a>
                 </li>
 
             </ul>
@@ -66,7 +66,26 @@ include("menu.php");
     </div>
 
 
-  <section class="user-create container">
+      <section class="vendedor container">
+        <h1 class="user-text text-center">EDITAR USUARIO VENDEDOR</h1>
+
+
+        <div class="row my-5">
+            <div class="col-md-6">
+                <h5>USUARIOS CREADOS</h5>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group ">
+                    <input type="text" class="form-control" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                      <button class="btn btn-search" type="button">
+                          <img src="../assets/img/magnifier.png" class="calen-img" alt="">
+                      </button>
+                  </span>
+                </div>
+            </div>
+
+        </div>
   <?php
 
 
@@ -81,24 +100,35 @@ require_once("../modelo/connect.php");
           $hacerconsulta = $conexion->query($consulta);
 							 
 			
-							echo "<table class='table-sm table-striped' style='width:100%;'>";
+                            echo "<table class='table table-bordered'>";
+                            echo "<thead class='bck-thead txt-center'>";
 							echo "<tr>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Id</b></font></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Email Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Direccion</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Pais</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-							
-							echo "</tr>";
-							
+                            echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
+							echo "<th> ID </th>";
+							echo "<th>CLIENTE</th>";
+							echo "<th>CORREO ELECTRÓNICO </th>";
+							echo "<th> DIRECCIÓN</th>";
+							echo "<th>PAIS</th>";
+                            echo "<th></th>";
+                            echo "<th></th>";
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            echo "<tr>";
+                            echo "<td colspan='8'>";
+                            echo "<a href='crearusuario.php' class='btn btn-send btn-send-edit fwb btn-col1 col-md-12'>AGREGAR UN NUEVO VENDEDOR<i class='fas fa-plus plus-table'></i></a>";
+                            echo "</td>";
+                            echo "</tr>";		
+
 							
               //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
               $reg=$hacerconsulta->fetch_array();
 							
 							while ($reg)
 							{
-							echo "<tr>";
+
+                            echo "<tr>";
+                            echo "<td><input type='checkbox' aria-label='Checkbox for following text input'></td>";
 							echo "<td align='center' >".$reg[0]."</td>";
 							echo "<td align='center' >".$reg[1]."</td>";
 							echo "<td align='center' >".$reg[2]."</td>";
@@ -107,22 +137,20 @@ require_once("../modelo/connect.php");
 
 
                             echo "
-                            
                             <td  align='center' style='border: inset 0pt'>				
 								<form action='editarCliente.php' method='post'>			
 									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' src='../img/edit.gif' />
-                                </form>
-
-                                				
+									<input type='image' name='imageField' class='wdt-form' src='../assets/img/edit-draw-pencil.png' />
+                                </form>			
                             </td>
                             <td  align='center' style='border: inset 0pt'>				
 								<form action='usuario.php' method='post'>			
 									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' src='../img/view.gif' />
+									<input type='image' name='imageField' class='wdt-form' src='../assets/img/trash-can.png' />
                                 </form>                                				
 							</td>
-                            ";//FIN DEL echo
+                            ";
+                            //FIN DEL echo
 
 							
 					
@@ -132,13 +160,33 @@ require_once("../modelo/connect.php");
               $reg=$hacerconsulta->fetch_array();
 							echo "</tr>";
 							}
-							echo "</table>";
+                            echo "</table>";
+                            echo "</tbody>";
 							$conexion->close();
 
 							?>
 								</div>
 							<?php
 ?>
+            <div class="col-md-12 p-0">
+                <div class="row">
+                    <div class="col-md-6 p-0">
+                        <button class="btn btn-trash p-1" type="submit">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></button>
+                    </div>
+                    <div class="col-md-6 p-0 d-flex justify-content-end">
+                        <nav aria-label="Page navigation ">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link clpg" href="#">Previa</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link clpg" href="#">Próxima</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
   </section>
 
 

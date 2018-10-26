@@ -53,7 +53,7 @@ include("menu.php");
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
+                        <a class="dropdown-item"  href="index.php">CLIENTE</a>
                         <a class="dropdown-item" href="#">VENDEDOR</a>
                     </div>
                 </li>
@@ -66,78 +66,149 @@ include("menu.php");
     </div>
 
 
-  <section class="user-create container">
-  <form  method="post" action="#">
-
-<label>Nombre del Vendedor</label><br>
-  <input type="text" name="vendedor" required><br>
-
-<label>Telefono</label><br>
-  <input type="text" name="telefono" required><br>
-
-<label>Correo</label><br>
-  <input type="text" name="correo" required><br>
-
-    <label>Territorio</label><br>
-  <select name="territorio">
-      <option>Brasil</option>
-      <option>Venezuela</option>
-  </select><br>
+   <section class="vendedor container">
+    <form method="post" action="#">
+        <h1 class="user-text text-center">CREAR USUARIO VENDEDOR</h1>
 
 
-
-
+        <div class="row my-5">
+            <h5>DATOS DEL VENDEDOR</h5>
+        </div>
+        <div class="row">
         
-        
-<br><br>
-<label>Clientes:</label>
-<br>
+            <div class="col-md-6">
+                <p>Nombre</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="#" name="vendedor" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">*</span>
+                    </div>
+                </div>
+<!--
+                <p>Usuario</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="#" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">*</span>
+                    </div>
+                </div>
+    -->
+                <p>Correo Electrónico</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="#" name="correo" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">*</span>
+                    </div>
+                </div>
 
-<ul>
-   <?php
-
-         require_once("../modelo/connect.php");
-         $consulta = "SELECT * FROM usuarios WHERE estatus='Activo'";
-
-        $resultado = $conexion->query($consulta);
-        
-        while($fila=$resultado->fetch_assoc()){
-        
-            
-        
-            echo "<li> <input type='checkbox' name='cliente[]' value='". $fila['cliente']."'> "  . $fila['cliente']."</li>";
-            
-            
-        }
-        
-        $conexion->close();
-   ?>
-  </ul>
-
-
-  <br>
-  <input type="submit" value="Crear Vendedor" name="createVendedor">
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <p>Telefono</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="#" name="telefono" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">*</span>
+                    </div>
+                </div>
+<!--
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Pais</p>
+                        <div class="input-group mb-1">
+                            <select class="custom-select" id="inputGroupSelect02" required>
+                                        <option selected>Seleccione..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">*</label>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="col-md-12" style="padding: 0 !important;">
+                        <p>Territorio</p>
+                        <div class="input-group mb-1">
+                            <select class="custom-select" id="inputGroupSelect02" name="territorio" required>
+                                        <option selected>Seleccione..</option>
+                                        <option value="1">Brasil</option>
+                                        <option value="2">Venezuela</option>
+                                    </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">*</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                </div>-->
 
 
+            </div>
 
+            <div class="col-md-6">
+                <div class="box-vend">
+                    <div class="menu-down p-4">
+                        <ul class="nav nav-tabs container">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Clientes</a>
+                            </li>
+                        </ul>
 
+                        <div class="input-group py-3">
+                            <input type="text" class="form-control" placeholder="Buscar" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-search" type="button">
+                                    <img src="assets/img/magnifier.png" class="calen-img" alt="">
+                                </button>
+                            </span>
+                        </div>
 
+                        <div class="box-search">
+                            <nav>
+                                <ul class="nav flex-column m-3">
+                                <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
+                                <?php
+                                    require_once("../modelo/connect.php");
+                                    $consulta = "SELECT * FROM usuarios WHERE estatus='Activo'";
+                                    $resultado = $conexion->query($consulta);
+                                    while($fila=$resultado->fetch_assoc()){
+                                    echo "<li class='nav-item'> <input type='checkbox' class='check' name='cliente[]' value='". $fila['cliente']."'> "  . $fila['cliente']."</li>";
+                                    }
+                                    $conexion->close();
+                                    ?>    
+                                </ul>
+                            </nav>
+
+                        </div><!--
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button class="btn btn-col3 m-1" type="submit">CANCEL</button>
+                            <button class="btn btn-send btn-col1 m-1" type="submit">SALVAR</button>
+                        </div>
+                                -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 my-5" style="text-align:center">
+                <button class="btn btn-send btn-col1 m-1" name="createVendedor" type="submit">CREAR VENDEDOR</button>
+                
+                    
+<!--
+                <div class=" box-select my-5">
+                    <nav>
+                        <ul class="nav">
+                            <li class="box-select-client p-1 m-2">cliente 1 <span class="x mx-2"> X </span> </li>
+                            <li class="box-select-client p-1 m-2">cliente 2 <span class="x mx-2"> X </span> </li>
+                            <li class="box-select-client p-1 m-2">cliente 3 <span class="x mx-2"> X </span> </li>
+                            <li class="box-select-client p-1 m-2">cliente 4 <span class="x mx-2"> X </span> </li>
+                        </ul>
+                    </nav>
+                </div>
+                                -->
+                
+
+            </div>
+        </div>
+        </form>
+    </section>
 
 
 <?php
@@ -244,6 +315,7 @@ require ("../modelo/connect.php");
 
 
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script>
