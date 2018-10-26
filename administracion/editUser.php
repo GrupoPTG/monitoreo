@@ -152,12 +152,11 @@ if(isset($_POST['delete'])){
 
 
                             echo "
-
                             <td  align='center' style='border: inset 0pt'>				
 								<form action='#' method='post'>			
                                     <input type='hidden' name='idUser' value=".$reg[0].">
                                     <input type='hidden' name='delete'>
-									<input type='image' name='imageField' src='../img/delete.gif' />
+									<input type='image' name='imageField' src='../img/trash-can.png' width='20px' />
                                 </form>                                				
                             </td>
                             

@@ -38,7 +38,7 @@ include("menu.php");
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link" href="formatoVendedores.php">VENDEDORES</a>
                 </li>
 
                 <li class="nav-item">
