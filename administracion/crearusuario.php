@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/tcal.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
 </head>
@@ -174,14 +174,14 @@ include("menu.php");
             </div>
     -->
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  required>
+                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  required>
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" required>
+                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" required>
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
@@ -207,31 +207,31 @@ include("menu.php");
                 
                 <p>Número de contrato</p>
                 <div class="input-group mb-3">
-                    <input type="text"  class="form-control" name="numeroContrato" >
+                    <input type="number"  class="form-control" name="numeroContrato" >
                 </div>
                 
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Fecha de Inicio</p>
+                        <p>Fecha de Inicio</p><!--
                         <input type="text" name="inicioContrato" class="tcal" value="" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="date"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p>Fecha de Culminación</p>
+                        <p>Fecha de Culminación</p><!--
                         <input type="text" name="finContrato" class="tcal" value="" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="text"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div> -->
+                        </div> 
                     </div>
                     <!--
                     <p>Vendedor</p>

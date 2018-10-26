@@ -67,6 +67,8 @@ header img { margin: 40px; }
 
 .box2 { width: 220px !important; margin: 15px 19px; }
 
+.btn-table { display: inline-block; margin: 0px 5px; }
+
 .box-vend { border: 1px solid #bcbec0; }
 
 .box-select { border: 1px solid #bcbec0; height: auto; }

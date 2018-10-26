@@ -124,8 +124,7 @@ if(isset($_POST['delete'])){
 							echo "<th>CORREO ELECTRÓNICO </th>";
 							echo "<th> DIRECCIÓN</th>";
 							echo "<th>PAIS</th>";
-                            echo "<th></th>";
-                            echo "<th></th>";
+                            echo "<th> OPCIONES </th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
@@ -153,25 +152,22 @@ if(isset($_POST['delete'])){
 
                             echo "
                             <td  align='center' style='border: inset 0pt'>				
-								<form action='#' method='post'>			
+                            <form action='formatoUsuario.php' method='post' class='btn-table'>			
+                                <input type='hidden' name='idUser' value=".$reg[0].">
+                                <input type='image' name='imageField' class='wdt-form' src='../assets/img/magnifier.png' />
+                             </form>   
+                                <form action='editarCliente.php' method='post' class='btn-table'>			
+									<input type='hidden' name='idUser' value=".$reg[0].">
+									<input type='image' name='imageField' class='wdt-form' src='../assets/img/edit-draw-pencil.png' />
+                                </form>      
+                                                       				
+                                <form action='#' method='post' class='btn-table'>			
                                     <input type='hidden' name='idUser' value=".$reg[0].">
                                     <input type='hidden' name='delete'>
-									<input type='image' name='imageField' src='../img/trash-can.png' width='20px' />
-                                </form>                                				
+									<input type='image' name='imageField' src='../assets/img/trash-can.png' width='20px' />
+                                </form>  
                             </td>
                             
-                            <td  align='center' style='border: inset 0pt'>				
-								<form action='editarCliente.php' method='post'>			
-									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' src='../img/edit.gif' />
-                                </form>                                				
-                            </td>
-                            <td  align='center' style='border: inset 0pt'>				
-								<form action='formatoUsuario.php' method='post'>			
-									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' class='wdt-form' src='../assets/img/trash-can.png' />
-                                </form>                                				
-							</td>
                             ";
                             //FIN DEL echo
 

@@ -86,96 +86,57 @@ $fila=$resultado->fetch_assoc();
      $finContrato =$fila['finContrato'];
      $descripcion =$fila['descripcion'];
 
-	
-
-
 ?>
 
 
-<br><br>
-<span>Cliente</span>
-<input type="text" name="" value="<?php echo $cliente   ?>" readonly>
-<br><br>
 
 
-<span>Pais</span>
-<input type="text" name="" value="<?php echo $pais   ?>" readonly>
+<section class="user-create container">
+    <h1 class="user-text text-center">INFORMACIÓN DE CLIENTE</h1>
 
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h4> <span style="color:black">Cliente: </span><?php echo $cliente   ?></h4>
+                <h4> <span style="color:black">Idioma: </span><?php echo $idioma   ?></h4>
+                <h4> <span style="color:black">Inicio Contrato: </span><?php echo $inicioContrato   ?></h4>
+            </div>
+            <div class="col-md-6">
+                <h4> <span style="color:black">Correo Electronico: </span><?php echo $email   ?></h4>
+                <h4> <span style="color:black">Pais: </span><?php echo $pais   ?></h4>
+                <h4> <span style="color:black">Fin Contrato: </span><?php echo $finContrato   ?></h4>
+            </div>
+            <div class="col-md-12">
+                <h4> <span style="color:black">Direccion de Cliente: </span><?php echo $direccion   ?></h4>
+                <h4> <span style="color:black">Descripción: </span><?php echo $descripcion   ?></h4>
+            </div>
+            <div class="col-md-12">
+                <h4>Contactos:</h4>
+                <ul>
+                <?php
+                    $consulta = "SELECT * FROM contactos WHERE cliente='$usuario'";
 
-<span>Idioma</span>
-<input type="text" name="" value="<?php echo $idioma   ?>" readonly>
-<br><br>
+                    $resultado = $conexion->query($consulta);
 
-<span>Inicio Contrato</span>
-<input type="text" name="" value="<?php echo $inicioContrato   ?>" readonly>
-<br><br>
+                    while($fila=$resultado->fetch_assoc()){
 
-<span>Fin Contrato</span>
-<input type="text" name="" value="<?php echo $finContrato   ?>" readonly>
-<br><br>
+                        echo "<li> Contacto: ". $fila['nombreContacto']." </li>";
+                        echo "<li> Cargo: ". $fila['cargo']." </li>";
+                        echo "<li> Email: ". $fila['emailContacto']." </li>";
+                        echo "<li> Teléfono: ". $fila['telefonoContacto']." </li>";
 
-<span>Correo Electronico</span>
-<input type="text" name="" value="<?php echo $email   ?>" readonly>
-<br><br>
+                    }
+                    $conexion->close();
+                    ?>
+                </ul>
 
+            </div>
 
-<span>Direccion de Cliente</span>
-<input type="text" name="" value="<?php echo $direccion   ?>" readonly>
-<br><br>
-
-<span>Descripcion</span>
-<input type="text" name="" value="<?php echo  $descripcion   ?>" readonly>
-<br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+</section>
 
 
 
 
-
-
-
-Contactos:<br>
-<?php
-$consulta = "SELECT * FROM contactos WHERE cliente='$usuario'";
-
-?>
-    <div style="width: 90%; margin:0 auto; font-size: 13px;" >
- <?php
-$resultado = $conexion->query($consulta);
-
-while($fila=$resultado->fetch_assoc()){
-
-	
-
-	echo "<input type='text' value='". $fila['nombreContacto']."'>";
-  echo "<input type='text' value='". $fila['cargo']."'>";
-	echo "<input type='text' value='". $fila['emailContacto']."'>";
-  echo "<input type='text' value='". $fila['telefonoContacto']."'>";
-  echo "<br>";
-	
-
-}
-
-$conexion->close();
-
-           
-                         
-                        
-
-?>
-  </section>
 
 
 

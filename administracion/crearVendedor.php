@@ -53,8 +53,8 @@ include("menu.php");
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="index.php">CLIENTE</a>
-                        <a class="dropdown-item" href="#">VENDEDOR</a>
+                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
+                        <a class="dropdown-item" href="crearVendedor.php">VENDEDOR</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -67,7 +67,7 @@ include("menu.php");
 
 
    <section class="vendedor container">
-    <form method="post" action="#">
+    <form method="post" action="#" id="resetear">
         <h1 class="user-text text-center">CREAR USUARIO VENDEDOR</h1>
 
 
@@ -95,7 +95,7 @@ include("menu.php");
     -->
                 <p>Correo Electrónico</p>
                 <div class="input-group mb-3">
-                    <input type="text" id="#" name="correo" class="form-control" required>
+                    <input type="email" id="#" name="correo" class="form-control" required>
                     <div class="input-group-append">
                         <span class="input-group-text">*</span>
                     </div>
@@ -103,7 +103,7 @@ include("menu.php");
 
                 <p>Telefono</p>
                 <div class="input-group mb-3">
-                    <input type="text" id="#" name="telefono" class="form-control" required>
+                    <input type="number" id="#" name="telefono" class="form-control" required>
                     <div class="input-group-append">
                         <span class="input-group-text">*</span>
                     </div>

@@ -224,14 +224,14 @@ $fila=$resultado->fetch_assoc();
             </div>
     -->
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
+                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
+                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
@@ -262,26 +262,26 @@ $fila=$resultado->fetch_assoc();
                 
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Fecha de Inicio</p>
+                        <p>Fecha de Inicio</p><!--
                         <input type="text" name="inicioContrato" class="tcal" value="<?php echo $inicioContrato; ?>" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" value="<?php echo $inicioContrato; ?>">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="date"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p>Fecha de Culminación</p>
+                        <p>Fecha de Culminación</p><!--
                         <input type="text" name="finContrato" class="tcal" value="<?php echo $finContrato; ?>" />
-                        <!--
+                        -->
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" value="<?php echo $finContrato; ?>" >
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="text"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div> -->
+                        </div> 
                     </div>
                     <!--
                     <p>Vendedor</p>
@@ -329,7 +329,7 @@ $fila=$resultado->fetch_assoc();
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
                 <input type="hidden" value="<?php echo $usuario?>" name="idUser">
-                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">CREAR</button>
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">EDITAR</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
         </div>

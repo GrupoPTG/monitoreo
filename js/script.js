@@ -16,15 +16,15 @@ function agregarContacto() {
     inputName.className = "box1 form-control";
 
     var inputEmail = document.createElement("INPUT");
-    inputEmail.type = 'text';
+    inputEmail.type = 'email';
     inputEmail.name = 'nombreCorreo[]';
-    inputEmail.placeholder = 'Correo';
+    inputEmail.placeholder = 'Correo Electrónico';
     inputEmail.className = "box2 form-control";
 
     var inputTelefono = document.createElement("INPUT");
-    inputTelefono.type = 'text';
+    inputTelefono.type = 'number';
     inputTelefono.name = 'nombreTelefono[]';
-    inputTelefono.placeholder = 'Telefono';
+    inputTelefono.placeholder = 'Teléfono';
     inputTelefono.className = "box2 form-control";
 
     var inputCargo = document.createElement("INPUT");
