@@ -88,8 +88,23 @@ include("menu.php");
         </div>
   <?php
 
-
 require_once("../modelo/connect.php");
+
+echo "<br><br>";
+
+if(isset($_POST['delete'])){
+
+    $usuario = $_POST['idUser'];
+
+    $consulta = "DELETE FROM usuarios WHERE id='$usuario' ";
+    $hacerconsulta = $conexion->query($consulta);
+
+    echo "usuario eliminado";
+}
+
+
+
+
 
    $consulta = "SELECT * FROM usuarios";
 
@@ -137,14 +152,23 @@ require_once("../modelo/connect.php");
 
 
                             echo "
+
+                            <td  align='center' style='border: inset 0pt'>				
+								<form action='#' method='post'>			
+                                    <input type='hidden' name='idUser' value=".$reg[0].">
+                                    <input type='hidden' name='delete'>
+									<input type='image' name='imageField' src='../img/delete.gif' />
+                                </form>                                				
+                            </td>
+                            
                             <td  align='center' style='border: inset 0pt'>				
 								<form action='editarCliente.php' method='post'>			
 									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' class='wdt-form' src='../assets/img/edit-draw-pencil.png' />
-                                </form>			
+									<input type='image' name='imageField' src='../img/edit.gif' />
+                                </form>                                				
                             </td>
                             <td  align='center' style='border: inset 0pt'>				
-								<form action='usuario.php' method='post'>			
+								<form action='formatoUsuario.php' method='post'>			
 									<input type='hidden' name='idUser' value=".$reg[0].">
 									<input type='image' name='imageField' class='wdt-form' src='../assets/img/trash-can.png' />
                                 </form>                                				
