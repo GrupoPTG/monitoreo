@@ -1,0 +1,64 @@
+//HEADER 
+  
+header
+  min-height: 145px
+  background: $black
+  position: relative
+  img 
+    margin: 40px
+
+.conf
+  background: $conf
+  height: 40px
+  width: 100%
+
+  span img 
+    width: 30px
+  
+  .wdt
+    width: 250px
+
+  .nav-link
+    display: inline-block
+    padding: 0.3rem 1rem
+  
+  a 
+    color: $white
+    &:hover
+      color: $boton
+  
+  .dropdown-menu
+    background: $conf
+
+.menu
+  background: $header
+  height: 80px
+  .menu-down
+    height: 100%
+    display: flex
+    align-items: end
+  .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus
+    background: $white
+    color: $boton
+  li a 
+    color: $white
+    &:hover
+      color: $boton
+  .nav-tabs
+    border-bottom: 1px solid #008141
+  .raya
+    border: 0.1px solid white
+    height: 19px
+    margin-top: 13px
+
+.sub-menu
+  margin: 20px 0px
+  li a
+    color: $text
+    &:hover 
+      color: $boton
+    &:active
+      color: $boton
+
+.active 
+  color: $boton !important

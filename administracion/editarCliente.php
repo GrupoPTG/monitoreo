@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/tcal.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
 </head>
@@ -73,28 +73,9 @@ include("menu.php");
 
 
 
+
 <?php
-
-$usuario = $_POST['idUser'];
-require_once("../modelo/connect.php");
-
-$sql = "SELECT * FROM usuarios WHERE id='$usuario'";
-$resultado = $conexion->query($sql);
-$fila=$resultado->fetch_assoc();
-	 
-     $cliente =$fila['cliente'];
-     $email =$fila['emailCliente'];
-     $usuarioCliente =$fila['usuario'];
-     $pass =$fila['pass'];
-     $direccion =$fila['direccion'];
-     $pais =$fila['pais'];
-     $idioma =$fila['idioma'];
-     $inicioContrato =$fila['inicioContrato'];
-     $finContrato =$fila['finContrato'];
-     $numContrato=$fila['numero_contrato'];
-     $descripcion=$fila['descripcion'];
-
-
+  require_once("../controlador/datosEditarCliente.php");
 ?>
 
 
@@ -180,7 +161,7 @@ $fila=$resultado->fetch_assoc();
 
                 <p>Usuario</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control"  name="usuarioCliente" value="<?php echo $cliente; ?>">
+                    <input type="text" class="form-control"  name="usuarioCliente" value="<?php echo $usuarioCliente; ?>">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">*</span>
                     </div>
@@ -210,43 +191,34 @@ $fila=$resultado->fetch_assoc();
         </div>
         <div class="col-md-12 row">
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" required>
+                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
-<!--
+
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Cargo"  required>
+                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
-                </div>
-            </div>
-    -->
-            <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
+                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
             <div class="input-group wd-1 m-1 clonedInput">
                 <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
             <button type="button" id="btnAdd" class="btn btn-light btn-circle" onclick="agregarContacto()"><i class="fas fa-plus"></i></button>
             <div id="formularioCliente" class="col-md-12 row"></div>  
-            <!--
-            <button type="button" id="btnAdd" class="btn btn-light btn-circle"><i class="fas fa-plus"></i></button>
-            -->
+    
         </div>
 
         <div class="row my-5">
@@ -263,37 +235,23 @@ $fila=$resultado->fetch_assoc();
                 <div class="row">
                     <div class="col-md-6">
                         <p>Fecha de Inicio</p>
-                        <input type="text" name="inicioContrato" class="tcal" value="<?php echo $inicioContrato; ?>" />
-                        <!--
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" value="<?php echo $inicioContrato; ?>">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="date"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <p>Fecha de Culminación</p>
-                        <input type="text" name="finContrato" class="tcal" value="<?php echo $finContrato; ?>" />
-                        <!--
                         <div class="input-group mb-3">
-                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" >
+                            <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" value="<?php echo $finContrato; ?>" >
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="text"><img src="../assets/img/calendar.png" class="calen-img" alt=""></button>
                             </div>
-                        </div> -->
+                        </div> 
                     </div>
-                    <!--
-                    <p>Vendedor</p>
-                    <div class="input-group mb-1">
-                        <select class="custom-select"  required>
-                            <option selected>Seleccione..</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    -->
+
                 </div>
 
             </div>
@@ -329,7 +287,7 @@ $fila=$resultado->fetch_assoc();
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
                 <input type="hidden" value="<?php echo $usuario?>" name="idUser">
-                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">CREAR</button>
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">EDITAR</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
         </div>
@@ -343,79 +301,14 @@ $fila=$resultado->fetch_assoc();
 
 
 
+
+
+
+
+
+
 <?php
-
- if(isset($_POST['editarCliente'])){
-
-
-    echo $idUsuario= $_POST['idUser']; 
-    $nombreCliente= $_POST['cliente'];
-    $emailCliente=$_POST['correoElectronico'];
-    $usuario= $_POST['usuarioCliente'];
-    $pass=$_POST['pass'];
-    $dirCliente=$_POST['direccion'];
-    //$pais=$_POST['pais'];
-    //$idioma=$_POST['idioma'];
-    $contratoInicio= $_POST['inicioContrato'];
-    $contratoFin=$_POST['finContrato'];
-     $contrato=$_POST['numeroContrato'];
-    $descripContrato=$_POST['descripcionCliente'];
-
-
-    
-    $nombreContacto = $_POST['nombreContacto'];
-    $nombreCorreo = $_POST['nombreCorreo'];
-    $nombreTelefono = $_POST['nombreTelefono'];
-    $nombreCargo = $_POST['cargo'];
-    
-  
-  
-  
-    $actualizarUsuario = "UPDATE usuarios SET 
-    cliente='$nombreCliente',
-    pass='$pass',
-    direccion='$dirCliente',
-    emailCliente='$emailCliente',
-    usuario='$usuario',
-    inicioContrato='$contratoInicio',
-    finContrato='$contratoFin',
-    numero_contrato='$contrato',
-    descripcion='$descripContrato'
-
-    WHERE id=$idUsuario";
-  
-    
-    //Consulta Actualizar Usuario
-    if($conexion->query($actualizarUsuario)!==False){
-        echo "El Usuario fue actualizado con exito";
-    }else{
-        echo "El Usuario no fue actualizado por favor consulte con el administrador";
-    }  
-  
-    
-
-    for($i=0; $i<sizeof($nombreContacto); ++$i){
-
-        $contactName = $nombreContacto[$i];
-        $contactEmail= $nombreCorreo[$i];
-        $contactTelef= $nombreTelefono[$i];
-        $contactCargo= $nombreCargo[$i];
-  
-        
-  
-        $registrarContacto = "INSERT INTO contactos VALUES (
-          '',
-          '$idUsuario',
-          '$contactName',
-          '$contactEmail',
-          '$contactTelef',
-          '$contactCargo'
-          )";
-    
-        $regitrarContacto = $conexion->query($registrarContacto);
-      }
-    
-  }
+  require_once("../controlador/editarCliente.php");
 ?>
 
 
@@ -432,89 +325,6 @@ $fila=$resultado->fetch_assoc();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<br><br>
-Lista de Usuarios Creados
--->
-
-<?php
-/*
-
-require_once("../modelo/connect.php");
-
-   $consulta = "SELECT * FROM usuarios";
-
-   ?>
-			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
-					<?php
-
-          $hacerconsulta = $conexion->query($consulta);
-							 
-			
-							echo "<table class='table-sm table-striped' style='width:100%;'>";
-							echo "<tr>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Id</b></font></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Email Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Direccion</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Pais</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-							
-							echo "</tr>";
-							
-							
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							
-							while ($reg)
-							{
-							echo "<tr>";
-							echo "<td align='center' >".$reg[0]."</td>";
-							echo "<td align='center' >".$reg[1]."</td>";
-							echo "<td align='center' >".$reg[2]."</td>";
-							echo "<td align='center' >".$reg[4]."</td>";
-							echo "<td align='center' >".$reg[5]."</td>";
-
-
-							echo "<td  align='center' style='border: inset 0pt'>				
-								<form action='usuario.php' method='post'>			
-									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' src='../img/view.gif' />
-								</form>				
-							</td>";//FIN DEL echo
-
-							
-					
-
-
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							echo "</tr>";
-							}
-							echo "</table>";
-							$conexion->close();
-
-							?>
-								</div>
-                            <?php
-                            */
-?>
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>

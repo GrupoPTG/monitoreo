@@ -67,6 +67,11 @@ include("menu.php");
 
 
   <section class="user-create container">
+
+
+
+
+
   <?php
 echo $vendedor = $_POST['idUser'];
 
@@ -138,7 +143,7 @@ $fila=$resultado->fetch_assoc();
    ?>
   </ul>
 
-            <div style="text-align:center;"><a href="formatoVendedores.php">Volver</div>
+            <div style="text-align:center;"><a href="vendedores.php">Volver</div>
   <br>
  
 
