@@ -254,6 +254,7 @@ include("menu.php");
             </div>
         </div>
     -->
+<<<<<<< HEAD
 
 
 
@@ -293,6 +294,16 @@ $resultado = $conexion->query($consulta);
 
 
 
+=======
+        <div class="row m-5">
+            <div class="col-md-12 txt-center ">
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="registrarCliente">CREAR</button>
+                <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
+            </div>
+        </div>
+    </form>
+  </section>
+>>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
 
         <div class="row m-5">
@@ -307,6 +318,9 @@ $resultado = $conexion->query($consulta);
 
 
 
+<?php
+  require_once("../controlador/registroUsuario.php");
+?>
 
 
 <?php
@@ -318,8 +332,11 @@ $resultado = $conexion->query($consulta);
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>

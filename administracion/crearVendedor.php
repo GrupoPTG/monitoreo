@@ -103,7 +103,11 @@ include("menu.php");
 
                 <p>Telefono</p>
                 <div class="input-group mb-3">
+<<<<<<< HEAD
                     <input type="number" id="#" name="telefono" class="form-control">
+=======
+                    <input type="number" id="#" name="telefono" class="form-control" required>
+>>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
                     <div class="input-group-append">
                         <span class="input-group-text">*</span>
                     </div>
@@ -129,6 +133,7 @@ include("menu.php");
                         <div class="input-group mb-1">
                             <select class="custom-select" id="inputGroupSelect02" name="territorio" required>
                                         <option selected>Seleccione..</option>
+<<<<<<< HEAD
                                         <option>Brasil</option>
                                         <option>Venezuela</option>
                                         <option>Argentina</option>
@@ -142,6 +147,10 @@ include("menu.php");
                                         <option>Paraguay</option>
                                         <option>Uruguay</option>
                                         <option>Mexico</option>
+=======
+                                        <option value="1">Brasil</option>
+                                        <option value="2">Venezuela</option>
+>>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
                                     </select>
                             <div class="input-group-append">
                                 <label class="input-group-text" for="inputGroupSelect02">*</label>
