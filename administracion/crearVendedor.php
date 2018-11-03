@@ -31,10 +31,10 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
+                    <a class="nav-link " href="#">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
@@ -103,7 +103,7 @@ include("menu.php");
 
                 <p>Telefono</p>
                 <div class="input-group mb-3">
-                    <input type="number" id="#" name="telefono" class="form-control" required>
+                    <input type="number" id="#" name="telefono" class="form-control">
                     <div class="input-group-append">
                         <span class="input-group-text">*</span>
                     </div>
@@ -129,8 +129,19 @@ include("menu.php");
                         <div class="input-group mb-1">
                             <select class="custom-select" id="inputGroupSelect02" name="territorio" required>
                                         <option selected>Seleccione..</option>
-                                        <option value="1">Brasil</option>
-                                        <option value="2">Venezuela</option>
+                                        <option>Brasil</option>
+                                        <option>Venezuela</option>
+                                        <option>Argentina</option>
+                                        <option>Bolivia</option>
+                                        <option>Brasil</option>
+                                        <option>Chile</option>
+                                        <option>Colombia</option>
+                                        <option>Ecuador</option>
+                                        <option>Panama</option>
+                                        <option>Peru</option>
+                                        <option>Paraguay</option>
+                                        <option>Uruguay</option>
+                                        <option>Mexico</option>
                                     </select>
                             <div class="input-group-append">
                                 <label class="input-group-text" for="inputGroupSelect02">*</label>
@@ -211,86 +222,14 @@ include("menu.php");
     </section>
 
 
+
+
+
 <?php
-if(isset($_POST['createVendedor'])){
-
-$largo=5;
-  $str = "abcdefghijklmnopqrstuvwxyz";
-  $may = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  $num = "1234567890";
-  $cad = "";
-  # Comienzo de la generacion de clave.
-  $cad = substr($may ,rand(0,24),1);
-  $cad .= substr($num ,rand(0,10),1);
-  $cad .= substr($num ,rand(0,10),1);
-  for($i=0; $i<$largo; $i++) {
-  $cad .= substr($str,rand(0,24),1);
-  }
-  ;
-
-  
-  $nombreVendedor= $_POST['vendedor'];
-  $emailVendedor=$_POST['correo'];
-  $telefono=$_POST['telefono'];
-  $territorio=$_POST['territorio'];
-  $cliente=$_POST['cliente'];
-
-
-  $registrarVendedor = "INSERT INTO vendedor VALUES (
-    '',
-    '$nombreVendedor',
-    '$telefono',
-    '$emailVendedor',
-    '$cad',
-    '$territorio'
-    )";
-
-  
-require ("../modelo/connect.php");
-  //Consulta Registrar Usuario
-  if($conexion->query($registrarVendedor)!==False){
-      echo "El Vendedor fue registrado con exito";
-  }else{
-      echo "El Vendedor no fue registrado por favor consulte con el administrador";
-  }
-
-
-
-     //Consulta obtener el ultimo ID de vendedor registrado
-     $ultimoIdVendedor ="SELECT MAX(id) AS id FROM vendedor";
-     $resultado = $conexion->query($ultimoIdVendedor);
-     if ($row = $resultado->fetch_row() ){
-           $code = trim($row[0]);
-           $vendedorId = $code++;
-         }
-
-
-
-
-
-  for($i=0; $i<sizeof($cliente); ++$i){
-
-    $clienteName = $cliente[$i];
-
-     $clienteName;
-
-
-    $registrarVendedor = "INSERT INTO vendedorcliente VALUES (
-      '',
-      '$vendedorId',
-      '$clienteName',
-      '',
-      ''
-      )";
-
-
-    $registroVendedor = $conexion->query($registrarVendedor);
-
-  }
-
-}//existe registrar vendedor?
-
+  require_once("../controlador/registrarVendedor.php");
 ?>
+
+
 
 
 

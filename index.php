@@ -58,7 +58,7 @@
                 
                         ?>
                         <script type="text/javascript">
-                            window.location="administracion/index.php";
+                            window.location="administracion/crearusuario.php";
                         </script>
                         <?php
                 

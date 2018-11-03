@@ -1,34 +1,5 @@
 <?php
 
-require ("connect.php");
-
-$registrarUsuario = "INSERT INTO usuarios VALUES (
-	'',
-	'$nombreCliente',
-	'$emailCliente',
-	'$usuarioCliente',
-	'$cad',
-	'$dirCliente',
-	'$pais',
-	'$idioma',
-	'$inicioContrato',
-	'$finContrato',
-    '$estatus',
-	'$numeroContrato',
-	'$descripcion'
-	)";
-
-
-$ultimoIdUsuario ="SELECT MAX(id) AS id FROM usuarios";
-
-
-
-
-
-							
-				
-
-
 
 /*
 

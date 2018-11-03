@@ -212,22 +212,89 @@ $fila=$resultado->fetch_assoc();
 <ul>
    <?php
 
-         require_once("../modelo/connect.php");
-         $consulta = "SELECT * FROM usuarios WHERE id='$vendedor'";
+        require_once("../modelo/connect.php");
 
-        $resultado = $conexion->query($consulta);
-        
-        while($fila=$resultado->fetch_assoc()){
-        
-            
-        
-            echo "<li> <input type='checkbox' name='cliente[]' value='". $fila['cliente']."'> "  . $fila['cliente']."</li>";
-            
-            
-        }
-        
-        $conexion->close();
+        $consulta = "SELECT * FROM vendedorcliente WHERE vendedor='$vendedor'";
+
+ ?>
+                   <div style="width: 90%; margin:0 auto; font-size: 13px;" >
+                  <?php
+
+        $hacerconsulta = $conexion->query($consulta);
+                           
+          
+                          echo "<table class='table-sm table-striped' style='width:100%;'>";
+                          echo "<tr>";
+                          
+                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
+                          echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
+                          
+                          echo "</tr>";
+                          
+                          
+            //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+            $reg=$hacerconsulta->fetch_array();
+                          
+                          while ($reg)
+                          {
+                          echo "<tr>";
+                          echo "<td align='center' >".$reg[2]."</td>";
+
+                          
+                          echo "
+                          <td  align='center' style='border: inset 0pt'>				
+								<form action='#' method='post'>			
+                                    <input type='hidden' name='idUser' value=".$reg[1].">
+                                    <input type='hidden' name='delete'>
+									<input type='image' name='imageField' src='../img/trash-can.png' width='20px' />
+                                </form>                                				
+                            </td>
+                            
+     
+                          
+                          
+                          ";//FIN DEL echo
+
+                          
+                  
+
+
+            //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+            $reg=$hacerconsulta->fetch_array();
+                          echo "</tr>";
+                          }
+                          echo "</table>";
+                          $conexion->close();
+
+                          ?>
+                              </div>
+                          <?php
+
    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </ul>
             <input type="hidden" value="<?php echo $vendedor ?>" name="idUser"> 
             <input type="submit" value="Guardar" name="actualizar">

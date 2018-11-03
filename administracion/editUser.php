@@ -67,7 +67,7 @@ include("menu.php");
 
 
       <section class="vendedor container">
-        <h1 class="user-text text-center">EDITAR USUARIO VENDEDOR</h1>
+        <h1 class="user-text text-center">LISTA DE CIENTES</h1>
 
 
         <div class="row my-5">
@@ -86,11 +86,32 @@ include("menu.php");
             </div>
 
         </div>
-  <?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
 
 require_once("../modelo/connect.php");
-
 echo "<br><br>";
+
 
 if(isset($_POST['delete'])){
 
@@ -103,94 +124,115 @@ if(isset($_POST['delete'])){
 }
 
 
+if(isset($_POST['usersID'])){
+
+    $usuario = $_POST['usersID'];
+
+    for($i=0; $i<sizeof($usuario); ++$i){
+
+        $userToDelete = $usuario[$i];
+        $consulta = "DELETE FROM usuarios WHERE id='$userToDelete' ";
+        $hacerconsulta = $conexion->query($consulta);
+    }
+
+    echo "Usuarios eliminados";
+}
 
 
 
-   $consulta = "SELECT * FROM usuarios";
-
-   ?>
-			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
-					<?php
-
-          $hacerconsulta = $conexion->query($consulta);
-							 
-			
-                            echo "<table class='table table-bordered'>";
-                            echo "<thead class='bck-thead txt-center'>";
-							echo "<tr>";
-                            echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
-							echo "<th> ID </th>";
-							echo "<th>CLIENTE</th>";
-							echo "<th>CORREO ELECTRÓNICO </th>";
-							echo "<th> DIRECCIÓN</th>";
-							echo "<th>PAIS</th>";
-                            echo "<th> OPCIONES </th>";
-                            echo "</tr>";
-                            echo "</thead>";
-                            echo "<tbody>";
-                            echo "<tr>";
-                            echo "<td colspan='8'>";
-                            echo "<a href='crearusuario.php' class='btn btn-send btn-send-edit fwb btn-col1 col-md-12'>AGREGAR UN NUEVO VENDEDOR<i class='fas fa-plus plus-table'></i></a>";
-                            echo "</td>";
-                            echo "</tr>";		
-
-							
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							
-							while ($reg)
-							{
-
-                            echo "<tr>";
-                            echo "<td><input type='checkbox' aria-label='Checkbox for following text input'></td>";
-							echo "<td align='center' >".$reg[0]."</td>";
-							echo "<td align='center' >".$reg[1]."</td>";
-							echo "<td align='center' >".$reg[2]."</td>";
-							echo "<td align='center' >".$reg[4]."</td>";
-							echo "<td align='center' >".$reg[5]."</td>";
 
 
-                            echo "
-                            <td  align='center' style='border: inset 0pt'>				
-                            <form action='formatoUsuario.php' method='post' class='btn-table'>			
-                                <input type='hidden' name='idUser' value=".$reg[0].">
-                                <input type='image' name='imageField' class='wdt-form' src='../assets/img/magnifier.png' />
-                             </form>   
-                                <form action='editarCliente.php' method='post' class='btn-table'>			
-									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' class='wdt-form' src='../assets/img/edit-draw-pencil.png' />
-                                </form>      
-                                                       				
-                                <form action='#' method='post' class='btn-table'>			
-                                    <input type='hidden' name='idUser' value=".$reg[0].">
-                                    <input type='hidden' name='delete'>
-									<input type='image' name='imageField' src='../assets/img/trash-can.png' width='20px' />
-                                </form>  
-                            </td>
-                            
-                            ";
-                            //FIN DEL echo
-
-							
-					
 
 
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							echo "</tr>";
-							}
-                            echo "</table>";
-                            echo "</tbody>";
-							$conexion->close();
+$consulta = "SELECT * FROM usuarios";
 
-							?>
-								</div>
-							<?php
 ?>
+    <div style="width: 90%; margin:0 auto; font-size: 13px;" >
+    <form method='post' action='#' name='myForm'><!--Formualrio CheckList-->
+<?php
+
+    $hacerconsulta = $conexion->query($consulta);
+							
+        echo "<table class='table table-bordered'>";
+        echo "<thead class='bck-thead txt-center'>";
+		echo "<tr>";
+        echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
+		echo "<th> ID </th>";
+		echo "<th>CLIENTE</th>";
+		echo "<th>CORREO ELECTRÓNICO </th>";
+		echo "<th> DIRECCIÓN</th>";
+		echo "<th>PAIS</th>";
+        echo "<th> OPCIONES </th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        echo "<tr>";
+        echo "<td colspan='8'>";
+        echo "<a href='crearusuario.php' class='btn btn-send btn-send-edit fwb btn-col1 col-md-12'>AGREGAR UN NUEVO VENDEDOR<i class='fas fa-plus plus-table'></i></a>";
+        echo "</td>";
+        echo "</tr>";		
+
+							
+    //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+    $reg=$hacerconsulta->fetch_array();
+							
+		while ($reg)
+		{
+
+            echo "<tr>";
+            echo "<td>                            
+            <input type='checkbox' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'>
+            </form>
+            </td>";
+			echo "<td align='center' >".$reg[0]."</td>";
+			echo "<td align='center' >".$reg[1]."</td>";
+			echo "<td align='center' >".$reg[2]."</td>";
+			echo "<td align='center' >".$reg[4]."</td>";
+			echo "<td align='center' >".$reg[5]."</td>";
+
+
+            echo "
+                <td  align='center' style='border: inset 0pt'>
+
+                <form action='verUsuario.php' method='post' class='btn-table'>			
+                    <input type='hidden' name='idUser' value=".$reg[0].">
+                    <input type='image' name='imageField' class='wdt-form' src='../assets/img/magnifier.png' />
+                </form> 
+
+                <form action='editarCliente.php' method='post' class='btn-table'>			
+				    <input type='hidden' name='idUser' value=".$reg[0].">
+				    <input type='image' name='imageField' class='wdt-form' src='../assets/img/edit-draw-pencil.png' />
+                </form>      
+                                                       				
+                <form action='#' method='post' class='btn-table'>			
+                    <input type='hidden' name='idUser' value=".$reg[0].">
+                    <input type='hidden' name='delete'>
+					<input type='image' name='imageField' src='../assets/img/trash-can.png' width='20px' />
+                </form>  
+                </td>
+                            
+            ";
+            //FIN DEL echo
+
+							
+				
+    //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+    $reg=$hacerconsulta->fetch_array();
+			echo "</tr>";
+			}
+            echo "</table>";
+            echo "</tbody>";
+			$conexion->close();
+			?>
+	</div><!--Fin del div contenedor lista -->
+            
+
+
+
             <div class="col-md-12 p-0">
                 <div class="row">
                     <div class="col-md-6 p-0">
-                        <button class="btn btn-trash p-1" type="submit">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></button>
+                        <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
                     </div>
                     <div class="col-md-6 p-0 d-flex justify-content-end">
                         <nav aria-label="Page navigation ">
@@ -206,10 +248,20 @@ if(isset($_POST['delete'])){
                 </div>
 
             </div>
+
+
+            
+   
+
+            
   </section>
 
 
-
+<script>
+function myFunction() {
+    document.myForm.submit() 
+}
+</script>
 
 
     <script src="../js/jquery.min.js"></script>

@@ -33,10 +33,21 @@ function agregarContacto() {
     inputCargo.placeholder = 'Cargo';
     inputCargo.className = "box2 form-control";
 
+    
+    /*
+    var checklist = document.createElement("INPUT");
+    checklist.type = 'radio';
+    checklist.name = 'principal';
+    checklist.value = 'principal2';
+    */
+
+    
+   
 
     aggInput.appendChild(inputName);
     aggInput.appendChild(inputEmail);
     aggInput.appendChild(inputTelefono);
     aggInput.appendChild(inputCargo);
+    //aggInput.appendChild(checklist);
     aggInput.appendChild(mybr);
 }

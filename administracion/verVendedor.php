@@ -26,6 +26,7 @@
 <?php
 include("menu.php");
 ?>
+
     <div class="menu ">
         <div class="menu-down">
             <ul class="nav nav-tabs container">
@@ -57,7 +58,7 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="editUser.php">EDITAR USUARIO</a>
+                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
                 </li>
 
             </ul>
@@ -66,77 +67,125 @@ include("menu.php");
 
 
   <section class="user-create container">
+
+
+
+
+
   <?php
-echo $usuario = $_POST['idUser'];
+echo $vendedor = $_POST['idUser'];
 
 require_once("../modelo/connect.php");
 
 
-$sql = "SELECT * FROM usuarios WHERE id='$usuario'";
+$sql = "SELECT * FROM vendedor WHERE id='$vendedor'";
 $resultado = $conexion->query($sql);
 $fila=$resultado->fetch_assoc();
 	 $id= $fila['id'];
-     $cliente =$fila['cliente'];
-     $email =$fila['emailCliente'];
+     $nomVendedor =$fila['nombre'];
+     $email =$fila['correo'];
+     $telefono =$fila['telefono'];
      $pass =$fila['pass'];
-     $direccion =$fila['direccion'];
-     $pais =$fila['pais'];
-     $idioma =$fila['idioma'];
-     $inicioContrato =$fila['inicioContrato'];
-     $finContrato =$fila['finContrato'];
-     $descripcion =$fila['descripcion'];
+     $territorio =$fila['territorio'];
+?>
+
+
+<form  method="post" action="#">
+
+<label>Nombre del Vendedor</label><br>
+  <input type="text" name="vendedor" value="<?php echo $nomVendedor ?>"><br>
+
+
+<label>Usuario</label><br>
+  <input type="text" name="correo" value="<?php echo $email ?>"><br>
+
+<label>Clave</label><br>
+  <input type="text" name="correo" value="<?php echo $pass ?>"><br>
+
+<label>Telefono</label><br>
+  <input type="text" name="telefono" value="<?php echo $telefono ?>"><br>
+
+
+<label>Pais</label><br>
+  <input type="text" name="telefono" value="<?php echo $territorio ?>"><br>
+
+
+
+
+  
+
+
+
+        
+        
+<br><br>
+<label>Clientes:</label>
+<br>
+
+<?php
+
+require_once("../modelo/connect.php");
+
+$consulta = "SELECT * FROM vendedorcliente WHERE vendedor='$vendedor'";
+
+?>
+           <div style="width: 90%; margin:0 auto; font-size: 13px;" >
+          <?php
+
+$hacerconsulta = $conexion->query($consulta);
+                   
+  
+                  echo "<table class='table-sm table-striped' style='width:100%;'>";
+                  echo "<tr>";
+                  
+                  echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
+                 
+                  
+                  echo "</tr>";
+                  
+                  
+    //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+    $reg=$hacerconsulta->fetch_array();
+                  
+                  while ($reg)
+                  {
+                  echo "<tr>";
+                  echo "<td align='center' >".$reg[2]."</td>";
+
+                  
+
+
+    //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+    $reg=$hacerconsulta->fetch_array();
+                  echo "</tr>";
+                  }
+                  echo "</table>";
+                  $conexion->close();
+
+                  ?>
+                      </div>
+                  <?php
 
 ?>
 
 
+            <div style="text-align:center;"><a href="vendedores.php">Volver</div>
+  <br>
+ 
 
-
-<section class="user-create container">
-    <h1 class="user-text text-center">INFORMACIÓN DE CLIENTE</h1>
-
-        <div class="row mt-5">
-            <div class="col-md-6">
-                <h4> <span style="color:black">Cliente: </span><?php echo $cliente   ?></h4>
-                <h4> <span style="color:black">Idioma: </span><?php echo $idioma   ?></h4>
-                <h4> <span style="color:black">Inicio Contrato: </span><?php echo $inicioContrato   ?></h4>
-            </div>
-            <div class="col-md-6">
-                <h4> <span style="color:black">Correo Electronico: </span><?php echo $email   ?></h4>
-                <h4> <span style="color:black">Pais: </span><?php echo $pais   ?></h4>
-                <h4> <span style="color:black">Fin Contrato: </span><?php echo $finContrato   ?></h4>
-            </div>
-            <div class="col-md-12">
-                <h4> <span style="color:black">Direccion de Cliente: </span><?php echo $direccion   ?></h4>
-                <h4> <span style="color:black">Descripción: </span><?php echo $descripcion   ?></h4>
-            </div>
-            <div class="col-md-12">
-                <h4>Contactos:</h4>
-                <ul>
-                <?php
-                    $consulta = "SELECT * FROM contactos WHERE cliente='$usuario'";
-
-                    $resultado = $conexion->query($consulta);
-
-                    while($fila=$resultado->fetch_assoc()){
-
-                        echo "<li> Contacto: ". $fila['nombreContacto']." </li>";
-                        echo "<li> Cargo: ". $fila['cargo']." </li>";
-                        echo "<li> Email: ". $fila['emailContacto']." </li>";
-                        echo "<li> Teléfono: ". $fila['telefonoContacto']." </li>";
-
-                    }
-                    $conexion->close();
-                    ?>
-                </ul>
-
-            </div>
-
-        </div>
-</section>
+</form>
 
 
 
 
+
+
+
+
+
+
+
+  </section>
 
 
 

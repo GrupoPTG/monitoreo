@@ -31,10 +31,10 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
+                    <a class="nav-link " href="#">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
@@ -119,8 +119,7 @@ include("menu.php");
                         <div class="input-group mb-1">
                             <select class="custom-select" name="idioma" required>
                               <option>Espanol</option>
-                              <option>Portuges</option>
-                              <option>Ingles</option>
+                              <option>Portuges</option>                              
                             </select>
                             <div class="input-group-append">
                                 <label class="input-group-text" for="#">*</label>
@@ -160,43 +159,37 @@ include("menu.php");
         </div>
         <div class="col-md-12 row">
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" required>
+                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
-<!--
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Cargo"  required>
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
-                </div>
-            </div>
-    -->
-            <div class="input-group wd-1 m-1">
-                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  required>
+                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" required>
+                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" required>
+                <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
+                
+                
+
             </div>
+            
             <button type="button" id="btnAdd" class="btn btn-light btn-circle" onclick="agregarContacto()"><i class="fas fa-plus"></i></button>
+           <!--Campos contactos-->
             <div id="formularioCliente" class="col-md-12 row"></div>  
-            <!--
-            <button type="button" id="btnAdd" class="btn btn-light btn-circle"><i class="fas fa-plus"></i></button>
-            -->
         </div>
 
         <div class="row my-5">
@@ -212,9 +205,7 @@ include("menu.php");
                 
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Fecha de Inicio</p><!--
-                        <input type="text" name="inicioContrato" class="tcal" value="" />
-                        -->
+                        <p>Fecha de Inicio</p>
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="inicioContrato" aria-label="Seleccione" required>
                             <div class="input-group-append">
@@ -223,9 +214,7 @@ include("menu.php");
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <p>Fecha de Culminación</p><!--
-                        <input type="text" name="finContrato" class="tcal" value="" />
-                        -->
+                        <p>Fecha de Culminación</p>
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" name="finContrato" aria-label="Seleccione" required>
                             <div class="input-group-append">
@@ -233,17 +222,6 @@ include("menu.php");
                             </div>
                         </div> 
                     </div>
-                    <!--
-                    <p>Vendedor</p>
-                    <div class="input-group mb-1">
-                        <select class="custom-select"  required>
-                            <option selected>Seleccione..</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    -->
                 </div>
 
             </div>
@@ -276,6 +254,47 @@ include("menu.php");
             </div>
         </div>
     -->
+
+
+
+
+
+
+
+<?php
+require_once("../modelo/connect.php");
+$consulta = "SELECT * FROM vendedor";
+$resultado = $conexion->query($consulta);
+?>
+
+            <br>
+            <label>Vendedor:</label>
+
+            <?php
+              echo "<select name='vendedor' style='height:30px; margin-bottom:15px;'>";
+              echo "<option>Seleccionar Vendedor</option>";  
+            ?>
+              <!--<option>Seleccionar..</option>-->
+            <?php                     
+              while($fila=$resultado->fetch_assoc())
+              {               
+                  echo "<option>".$fila['nombre']."</option>";
+              }
+            echo "</select>";
+
+            
+?>    
+
+
+
+
+
+
+
+
+
+
+
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
                 <button class="btn btn-send btn-col1 m-1" type="submit" name="registrarCliente">CREAR</button>
@@ -284,6 +303,11 @@ include("menu.php");
         </div>
     </form>
   </section>
+
+
+
+
+
 
 <?php
   require_once("../controlador/registroUsuario.php");
@@ -296,96 +320,6 @@ include("menu.php");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<br><br>
-Lista de Usuarios Creados
--->
-
-<?php
-/*
-
-require_once("../modelo/connect.php");
-
-   $consulta = "SELECT * FROM usuarios";
-
-   ?>
-			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
-					<?php
-
-          $hacerconsulta = $conexion->query($consulta);
-							 
-			
-							echo "<table class='table-sm table-striped' style='width:100%;'>";
-							echo "<tr>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Id</b></font></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Email Cliente</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Direccion</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Pais</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-							
-							echo "</tr>";
-							
-							
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							
-							while ($reg)
-							{
-							echo "<tr>";
-							echo "<td align='center' >".$reg[0]."</td>";
-							echo "<td align='center' >".$reg[1]."</td>";
-							echo "<td align='center' >".$reg[2]."</td>";
-							echo "<td align='center' >".$reg[4]."</td>";
-							echo "<td align='center' >".$reg[5]."</td>";
-
-
-							echo "<td  align='center' style='border: inset 0pt'>				
-								<form action='usuario.php' method='post'>			
-									<input type='hidden' name='idUser' value=".$reg[0].">
-									<input type='image' name='imageField' src='../img/view.gif' />
-								</form>				
-							</td>";//FIN DEL echo
-
-							
-					
-
-
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
-              $reg=$hacerconsulta->fetch_array();
-							echo "</tr>";
-							}
-							echo "</table>";
-							$conexion->close();
-
-							?>
-								</div>
-                            <?php
-                            */
-?>
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>

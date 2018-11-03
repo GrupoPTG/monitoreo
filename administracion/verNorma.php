@@ -66,147 +66,65 @@ include("menu.php");
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <section class="user-create container">
+  
+  <?php
+ $norma = $_POST['norma'];
 
-
-ASIGNAR NORMAS A CLIENTE
-
-<form method="post" action="#">
-
-<?php
 require_once("../modelo/connect.php");
-$consulta = "SELECT * FROM usuarios WHERE estatus='Activo'";
-$hacerconsulta = $conexion->query($consulta);
+
+
+$sql = "SELECT * FROM normas WHERE documento='$norma'";
+$resultado = $conexion->query($sql);
+$fila=$resultado->fetch_assoc();
+     $id= $fila['id'];
+	 $sdo= $fila['sdo'];
+     $documento =$fila['documento'];
+     $titulo =$fila['titulo'];
+     $idioma =$fila['idioma'];
+     $formato =$fila['formato'];
+     $revisionActual =$fila['revisionActual'];
+     $ultimaRevision =$fila['ultimaRevision'];
+     $estatus =$fila['estatus'];
+     $observaciones =$fila['observaciones'];
 ?>
 
-<label>Clientes:</label>
-    <?php
-       echo "<select name='cliente'>";
-    ?>
-       <option>Seleccionar..</option>
-    <?php  
-        while($fila=$hacerconsulta->fetch_assoc()){
-          echo "<option>".$fila['cliente']."</option>";
-        }
-        echo "</select>";
-    ?> 
+
+
+<br><br>
+<input type="text" value="<?php echo $id ?>" name="id">
+<br><br>
+<input type="text" value="<?php echo $sdo ?>" name="id">
+<br><br>
+<input type="text" value="<?php echo $documento ?>" name="documento">
+<br><br>
+
+<input type="text" value="<?php echo $titulo ?>" name="titulo">
+<br><br>
+
+<input type="text" value="<?php echo $idioma ?>" name="titulo">
+<br><br>    
+<input type="text" value="<?php echo $formato ?>" name="titulo">
+<br><br>
+<input type="text" value="<?php echo $revisionActual ?>" name="titulo">
+<br><br>
+<input type="text" value="<?php echo $ultimaRevision ?>" name="titulo">
+<br><br>
+<input type="text" value="<?php echo $estatus ?>" name="titulo">
+<br><br>   
+<input type="text" value="<?php echo $observaciones ?>" name="titulo">
+
+
+
+
 
 <br><br>
 
 
-
-
-
-
-<div class="box-search">
-                            <nav>
-                                <ul class="nav flex-column m-3">
-                                <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
-                                <?php
-                                    require_once("../modelo/connect.php");
-                                    $consulta = "SELECT * FROM normas";
-                                    $resultado = $conexion->query($consulta);
-                                    while($fila=$resultado->fetch_assoc()){
-                                    echo "<li class='nav-item'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'> "  . $fila['documento']."</li>";
-                                    }
-                                    
-                                    ?>    
-                                </ul>
-                            </nav>
-
-                        </div>
-
-
-<input type="submit" name="asignarNorma" value="Asignar Norma">
+<form method="post" action="editarNorma.php">
+<input type="hidden" name="norma" value="<?php echo $norma; ?>">
+<input type="submit" name="editarNorma" value="Modificar Registro">
 </form>
-
-
-
-
-<?php
-if(isset($_POST['asignarNorma'])){
-  require_once("../controlador/asignarNorma.php");
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br>
-  CARGAR NUEVA NORMAS
-<br><br>
-
-<form  method="post" action="#">
-
-<label>SDO - ORG</label><br>
-  <input type="text" name="sdo" required><br>
-
-<label>Nombre del Documento</label><br>
-  <input type="text" name="documento" required><br>
-
-<label>Titulo</label><br>
-  <input type="text" name="titulo" required><br>
-
-    <label>Idioma</label><br>
-  <select name="idioma">
-      <option>English</option>
-      <option>Espanol</option>
-  </select><br>
-
-   <label>Formato</label><br>
-  <select name="formato">
-      <option>Digital</option>
-  </select><br>
-
-  <label>Revision Actual</label><br>
-  <input type="text" name="revision" class="tcal" value="" /><br>
-
-    <label>Estatus</label><br>
-  <select name="estatus">
-      <option>Actualizada</option>
-      <option>Desactualizada</option>
-  </select><br>
-
-  <label>Observaciones</label><br>
-  <textarea name="observaciones"></textarea><br>
-
-
-  <br>
-  <input type="submit" value="Cargar Norma" name="cargarNorma">
-
-</form>
-
-
-
-
-<?php
-  require_once("../controlador/cargarNorma.php");
-?>
-
-
 
   </section>
 

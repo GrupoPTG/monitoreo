@@ -52,6 +52,9 @@ header img { margin: 40px; }
 .sub-menu { margin: 20px 0px; }
 .sub-menu li a { color: #808285; }
 .sub-menu li a:hover { color: #57b747; }
+.sub-menu li a:active { color: #57b747; }
+
+.active { color: #57b747 !important; }
 
 .wd-1 { width: 250px !important; }
 
@@ -68,6 +71,8 @@ header img { margin: 40px; }
 .box2 { width: 220px !important; margin: 15px 19px; }
 
 .btn-table { display: inline-block; margin: 0px 5px; }
+
+.client-span { font-size: 22px; margin-right: 20px; }
 
 .box-vend { border: 1px solid #bcbec0; }
 

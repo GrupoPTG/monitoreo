@@ -2,9 +2,9 @@
 
 
 	$server= "localhost";
-	$bd = "monitoreo_bd1";
+	$bd = "monitoreo_bd";
 	$user= "root";
-	$pass = "root";
+	$pass = "";
 
 /*
 
