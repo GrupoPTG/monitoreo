@@ -66,8 +66,16 @@ include("menu.php");
     </div>
 
 
+
+
+
+
+
+
+
+
   <section class="user-create container">
-  
+
   <?php
  $norma = $_POST['norma'];
 
@@ -108,10 +116,12 @@ $fila=$resultado->fetch_assoc();
 <br><br>
 <input type="text" value="<?php echo $revisionActual ?>" name="titulo">
 <br><br>
+
 <input type="text" value="<?php echo $ultimaRevision ?>" name="titulo">
 <br><br>
 <input type="text" value="<?php echo $estatus ?>" name="titulo">
-<br><br>   
+<br><br> 
+
 <input type="text" value="<?php echo $observaciones ?>" name="titulo">
 
 
@@ -125,6 +135,9 @@ $fila=$resultado->fetch_assoc();
 <input type="hidden" name="norma" value="<?php echo $norma; ?>">
 <input type="submit" name="editarNorma" value="Modificar Registro">
 </form>
+
+
+
 
   </section>
 

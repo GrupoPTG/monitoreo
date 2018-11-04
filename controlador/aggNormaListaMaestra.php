@@ -29,6 +29,14 @@ if(isset($_POST['asignarNorma'])){
           $revisionActual= $fila['revisionActual'];
           $estatus= $fila['estatus'];
           $observaciones= $fila['observaciones'];
+          $r = $fila['r'];
+          $e= $fila['e'];
+          $strz=$fila['strz'];
+          $crgo=$fila['crgo'];
+          $add=$fila['add'];
+          $tc=$fila['tc'];
+          $amd=$fila['amd'];
+          $erta=$fila['erta'];
 
     
     $sql2 = "SELECT * FROM normacliente WHERE norma='$listaNormas' and cliente='$cliente'";
@@ -47,7 +55,15 @@ if(isset($_POST['asignarNorma'])){
         '$revisionCliente',
         '$revisionActual',
         '$estatus',
-        '$observaciones'
+        '$observaciones',
+        '$r',
+        '$e',
+        '$strz',
+        '$crgo',
+        '$add',
+        '$tc',
+        '$amd',
+        '$erta'
         )";
   
   

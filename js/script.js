@@ -33,7 +33,6 @@ function agregarContacto() {
     inputCargo.placeholder = 'Cargo';
     inputCargo.className = "box2 form-control";
 
-<<<<<<< HEAD
     
     /*
     var checklist = document.createElement("INPUT");
@@ -45,9 +44,6 @@ function agregarContacto() {
     
    
 
-=======
-
->>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
     aggInput.appendChild(inputName);
     aggInput.appendChild(inputEmail);
     aggInput.appendChild(inputTelefono);

@@ -12,6 +12,14 @@ if(isset($_POST['cargarNorma'])){
     $revision=$_POST['revision'];
     $estatus=$_POST['estatus'];
     $observaciones=$_POST['observaciones'];
+    $r = $_POST['r'];
+    $e=$_POST['e'];
+    $strz=$_POST['strz'];
+    $crgo=$_POST['crgo'];
+    $add=$_POST['add'];
+    $tc=$_POST['tc'];
+    $amd=$_POST['amd'];
+    $erta=$_POST['erta'];
 
 
 
@@ -27,7 +35,15 @@ if(isset($_POST['cargarNorma'])){
       '$revision',
       '',
       '$estatus',
-      '$observaciones'
+      '$observaciones',
+      '$r',
+      '$e',
+      '$strz',
+      '$crgo',
+      '$add',
+      '$tc',
+      '$amd',
+      '$erta'
       )";
 
 require ("../modelo/connect.php");

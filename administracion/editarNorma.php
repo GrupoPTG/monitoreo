@@ -66,26 +66,50 @@ include("menu.php");
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <section class="user-create container">
-<div style="display:inline block; width:50%; ">
+<div style="display:inline-block; width:40%; background-color:red;">
 <?php
 
 $norma = $_POST['norma'];
 require_once("../modelo/connect.php");
 
-$sql = "SELECT * FROM normas WHERE documento='$norma'";
+$sql = "SELECT * FROM normacliente WHERE norma='$norma'";
 $resultado = $conexion->query($sql);
 $fila=$resultado->fetch_assoc();
 	 
 $sdo= $fila['sdo'];
-$documento =$fila['documento'];
+$documento =$fila['norma'];
 $titulo =$fila['titulo'];
-$idioma =$fila['idioma'];
-$formato =$fila['formato'];
+
+//$formato =$fila['formato'];
 $revisionActual =$fila['revisionActual'];
-$ultimaRevision =$fila['ultimaRevision'];
+$ultimaRevision =$fila['revisionCliente'];
 $estatus =$fila['estatus'];
 $observaciones =$fila['observaciones'];
+$r = $fila['r'];
+$e= $fila['e'];
+$strz=$fila['strz'];
+$crgo=$fila['crgo'];
+$add=$fila['add'];
+$tc=$fila['tc'];
+$amd=$fila['amd'];
+$erta=$fila['erta'];
 
 
 ?>
@@ -99,58 +123,8 @@ $observaciones =$fila['observaciones'];
  if(isset($_POST['editarNormas'])){
 
 
-    $sdo= $_POST['sdo'];
-    $documento= $_POST['documento'];
-    $titulo=$_POST['titulo'];
-    $formato=$_POST['formato'];
-    $idioma=$_POST['idioma'];
-    $revisionActual=$_POST['revisionActual'];
-    $ultimaRevision=$_POST['ultimaRevision'];
-    $estatus=$_POST['estatus'];
-    $observaciones=$_POST['observaciones'];
-  
-  
-    $actualizarNorma = "UPDATE normas SET 
-    sdo='$sdo',
-    titulo='$titulo',
-    idioma='$idioma',
-    formato='$formato',
-    revisionActual='$revisionActual',
-    ultimaRevision='$ultimaRevision',
-    estatus='$estatus',
-    observaciones='$observaciones'
-    WHERE documento='$documento'";
-  
-    
-            //Consulta Actualizar Usuario
-            if($conexion->query($actualizarNorma)!==False){
-                echo "La norma fue actualizada con exito";
-            }else{
-                echo "La norma no fue actualizado por favor consulte con el administrador";
-            }  
+    require_once("../controlador/editarNorma.php");
 
-
-//Carga en Registro por actualizacion de norma
-
-
-            $registroActNorma = "INSERT INTO normas_actualizadas VALUES (
-                '',
-                '$documento',
-                '$titulo',
-                '$revisionActual',
-                '$ultimaRevision',
-                '$estatus',
-                '$observaciones'
-                )";       
-  
-
-  //Consulta Actualizar Usuario
-  if($conexion->query($registroActNorma)!==False){
-    echo "El reporte normas fue actualizado actualizada con exito";
-}else{
-    echo "El reporte de normas no fue actualizado por favor consulte con el administrador";
-} 
-    
   }else{
       ?>
 
@@ -161,6 +135,7 @@ $observaciones =$fila['observaciones'];
         <input type="text" name="documento" value="<?php echo $documento; ?>" required readonly><br>
         <label>Titulo</label><br>
         <input type="text" name="titulo" value="<?php echo $titulo; ?>" required><br>
+        <!--
         <label>Formato</label><br>
         <select name="formato">
             <option>Digital</option>
@@ -170,16 +145,242 @@ $observaciones =$fila['observaciones'];
             <option>Ingles</option>
             <option>Espanol</option>
         </select><br>
+        
         <label>Revision Actual</label><br>
         <input type="text" name="revisionActual" class="tcal" value="<?php echo $revisionActual ?>" /><br>
-        <label>Ultima Revision</label><br>
-        <input type="text" name="ultimaRevision" class="tcal" value="<?php echo $ultimaRevision ?>" /><br>
+        <label>Revision Cliente</label><br>
+        <input type="text" name="ultimaRevision" class="tcal" value="<?php echo $ultimaRevision ?>" /><br><br>
+        -->
+
+
+
+
+
+
+<?php
+require_once("../modelo/connect.php");
+$consulta = "SELECT * FROM normacliente WHERE norma='$norma'";
+$hacerconsulta = $conexion->query($consulta);
+?>
+
+<label>Revision Actual:</label><br>
+    <?php
+       echo "<select name='revisionActual'>";
+    ?>
+       
+    <?php  
+        while($fila=$hacerconsulta->fetch_assoc()){
+          echo "<option>".$fila['revisionActual']."</option>";
+        }
+        echo "</select>";
+    ?> 
+    <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+require_once("../modelo/connect.php");
+$consulta = "SELECT * FROM normacliente WHERE norma='$norma'";
+$hacerconsulta = $conexion->query($consulta);
+?>
+
+<label>Estatus:</label><br>
+    <?php
+       echo "<select name='estatus'>";
+    ?>
+       
+    <?php  
+        while($fila=$hacerconsulta->fetch_assoc()){
+          echo "<option>".$fila['estatus']."</option>";
+        }
+        echo "</select>";
+    ?> 
+    <br><br>
+
+<!--
         <label>Estatus</label><br>
         <input type="text" name="estatus" value="<?php echo $estatus; ?>"><br><br>
+    -->
+        
+        
+        
+
+        <label>R:</label>
+        <input type="text" name="estatus" value="<?php echo $r; ?>"><br><br>
+        <label>E:</label>
+        <input type="text" name="estatus" value="<?php echo $e; ?>"><br><br>
+        <label>STRZ</label>
+        <input type="text" name="estatus" value="<?php echo $strz; ?>"><br><br>
+        <label>CRGO</label>
+        <input type="text" name="estatus" value="<?php echo $crgo; ?>"><br><br>
+        <label>ADD</label>
+        <input type="text" name="estatus" value="<?php echo $add; ?>"><br><br>
+        <label>TC</label>
+        <input type="text" name="estatus" value="<?php echo $tc; ?>"><br><br>
+        <label>AMD</label>
+        <input type="text" name="estatus" value="<?php echo $amd; ?>"><br><br>
+        <label>ERTA</label>
+        <input type="text" name="estatus" value="<?php echo $erta; ?>"><br><br>
+
         <label>Observaciones</label><br>
         <textarea name="observaciones"><?php echo $observaciones ?></textarea>
         
         
+
+
+
+
+
+
+</div>
+<div style="display:inline-block; width:40%; background-color:yellow; vertical-align:top; ">
+
+<?php
+
+$norma = $_POST['norma'];
+require_once("../modelo/connect.php");
+
+$sql2 = "SELECT * FROM normas WHERE documento='$norma'";
+$resultado2 = $conexion->query($sql2);
+$fila2=$resultado2->fetch_assoc();
+	 
+$asdo= $fila2['sdo'];
+$adocumento =$fila2['documento'];
+$atitulo =$fila2['titulo'];
+//$formato =$fila['formato'];
+$arevisionActual =$fila2['revisionActual'];
+$aultimaRevision =$fila2['ultimaRevision'];
+$aestatus =$fila2['estatus'];
+$aobservaciones =$fila2['observaciones'];
+$ar = $fila2['r'];
+$ae= $fila2['e'];
+$astrz=$fila2['strz'];
+$acrgo=$fila2['crgo'];
+$aadd=$fila2['add'];
+$atc=$fila2['tc'];
+$aamd=$fila2['amd'];
+$aerta=$fila2['erta'];
+?>
+
+<!--
+<label>Revision Actual</label><br>
+        <input type="text" name="revisionActual" class="tcal" value="<?php echo $arevisionActual ?>" /><br>
+        <label>Ultima Revision</label><br>
+        <input type="text" name="ultimaRevision" class="tcal" value="<?php echo $aultimaRevision ?>" /><br>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+require_once("../modelo/connect.php");
+$consulta = "SELECT * FROM normas WHERE documento='$norma'";
+$hacerconsulta = $conexion->query($consulta);
+?>
+
+<label>Revision Actual:</label><br>
+    <?php
+       echo "<select name='arevisionActual'>";
+    ?>
+       
+    <?php  
+        while($fila=$hacerconsulta->fetch_assoc()){
+          echo "<option>".$fila['revisionActual']."</option>";
+        }
+        echo "</select>";
+    ?> 
+    <br><br>
+
+
+
+
+
+
+<?php
+require_once("../modelo/connect.php");
+$consulta = "SELECT * FROM normas WHERE documento='$norma'";
+$hacerconsulta = $conexion->query($consulta);
+?>
+
+<label>Estatus:</label><br>
+    <?php
+       echo "<select name='estatus'>";
+    ?>
+       
+    <?php  
+        while($fila=$hacerconsulta->fetch_assoc()){
+          echo "<option>".$fila['estatus']."</option>";
+        }
+        echo "</select>";
+    ?> 
+    <br><br>
+
+
+
+
+        <!--
+        <label>Estatus</label><br>
+        <input type="text" name="estatus" value="<?php echo $aestatus; ?>"><br><br>
+        -->
+<label>R:</label>
+        <input type="text" name="estatus" value="<?php echo $ar; ?>"><br><br>
+        <label>E:</label>
+        <input type="text" name="estatus" value="<?php echo $ae; ?>"><br><br>
+        <label>STRZ</label>
+        <input type="text" name="estatus" value="<?php echo $astrz; ?>"><br><br>
+        <label>CRGO</label>
+        <input type="text" name="estatus" value="<?php echo $acrgo; ?>"><br><br>
+        <label>ADD</label>
+        <input type="text" name="estatus" value="<?php echo $aadd; ?>"><br><br>
+        <label>TC</label>
+        <input type="text" name="estatus" value="<?php echo $atc; ?>"><br><br>
+        <label>AMD</label>
+        <input type="text" name="estatus" value="<?php echo $aamd; ?>"><br><br>
+        <label>ERTA</label>
+        <input type="text" name="estatus" value="<?php echo $aerta; ?>"><br><br>
+
+        <label>Sustituida</label><br>
+        <input type="text" name="estatus" value=""><input type="button" value="Search"><br><br>
+
+        <label>Observaciones</label><br>
+        <textarea name="observaciones"><?php echo $aobservaciones ?></textarea>
+
+       
+        
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
         <br><br>
         <input type="hidden" value="<?php echo $norma?>" name="norma">
         <input type="submit" name="editarNormas" value="Guardar Cambios">
@@ -193,12 +394,19 @@ $observaciones =$fila['observaciones'];
   ?>
 
 
-</div>
 
-Hola mundo
-<div style="display:inline block; width:50%; ">
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
   </section>
 
 

@@ -112,15 +112,11 @@ if(isset($_POST['registrarCliente'])){
 
 
 
-<<<<<<< HEAD
     
-=======
->>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
 
 
 
-<<<<<<< HEAD
     $sql = "SELECT * FROM vendedor WHERE nombre='$vendedor'";
     $resultado = $conexion->query($sql);
     $fila=$resultado->fetch_assoc();
@@ -142,8 +138,6 @@ if(isset($_POST['registrarCliente'])){
     
 
   }//existe registrar cliente?
-=======
->>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
 
 

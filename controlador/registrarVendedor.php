@@ -20,15 +20,11 @@ $largo=5;
   $emailVendedor=$_POST['correo'];
   $telefono=$_POST['telefono'];
   $territorio=$_POST['territorio'];
-<<<<<<< HEAD
   
  
   
 
  
-=======
-  $cliente=$_POST['cliente'];
->>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
 
   $registrarVendedor = "INSERT INTO vendedor VALUES (
@@ -61,7 +57,6 @@ require ("../modelo/connect.php");
 
 
 
-<<<<<<< HEAD
          if(isset($_POST['cliente']))
          {
            $cliente=$_POST['cliente'];
@@ -99,29 +94,6 @@ require ("../modelo/connect.php");
        
 
  
-=======
-
-
-  for($i=0; $i<sizeof($cliente); ++$i){
-
-    $clienteName = $cliente[$i];
-
-     $clienteName;
-
-
-    $registrarVendedor = "INSERT INTO vendedorcliente VALUES (
-      '',
-      '$vendedorId',
-      '$clienteName',
-      '',
-      ''
-      )";
-
-
-    $registroVendedor = $conexion->query($registrarVendedor);
-
-  }
->>>>>>> 48fea412ae2a4dd66f5d6951347cc9777aeb7f37
 
 }//existe registrar vendedor?
 

@@ -194,6 +194,25 @@ if(isset($_POST['asignarNorma'])){
   <textarea name="observaciones"></textarea><br>
 
 
+
+<label>R:</label>
+        <input type="text" name="r" ><br><br>
+        <label>E:</label>
+        <input type="text" name="e" ><br><br>
+        <label>STRZ</label>
+        <input type="text" name="strz" ><br><br>
+        <label>CRGO</label>
+        <input type="text" name="crgo" ><br><br>
+        <label>ADD</label>
+        <input type="text" name="add" ><br><br>
+        <label>TC</label>
+        <input type="text" name="tc" ><br><br>
+        <label>AMD</label>
+        <input type="text" name="amd" ><br><br>
+        <label>ERTA</label>
+        <input type="text" name="erta" ><br><br>
+
+
   <br>
   <input type="submit" value="Cargar Norma" name="cargarNorma">
 
