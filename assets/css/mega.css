@@ -74,6 +74,9 @@ header img { margin: 40px; }
 
 .client-span { font-size: 22px; margin-right: 20px; }
 
+.alist { color: #000000; }
+.alist:hover { text-decoration: none; }
+
 .box-vend { border: 1px solid #bcbec0; }
 
 .box-select { border: 1px solid #bcbec0; height: auto; }

@@ -58,7 +58,12 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="editUser.php">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
+                </li>
                 </li>
 
             </ul>
@@ -105,7 +110,7 @@ include("menu.php");
                 <div class="input-group mb-3">
                     <input type="number" id="#" name="telefono" class="form-control">
                     <div class="input-group-append">
-                        <span class="input-group-text">*</span>
+                        <span class="input-group-text">  </span>
                     </div>
                 </div>
 <!--
@@ -164,10 +169,10 @@ include("menu.php");
                         </ul>
 
                         <div class="input-group py-3">
-                            <input type="text" class="form-control" placeholder="Buscar" />
+                            <input type="text" class="form-control" id="datos2" placeholder="Buscar" onkeyup="doSearchLi()"/>
                             <span class="input-group-btn">
                                 <button class="btn btn-search" type="button">
-                                    <img src="assets/img/magnifier.png" class="calen-img" alt="">
+                                    <img src="../assets/img/magnifier.png" class="calen-img" alt="">
                                 </button>
                             </span>
                         </div>
@@ -175,16 +180,19 @@ include("menu.php");
                         <div class="box-search">
                             <nav>
                                 <ul class="nav flex-column m-3">
-                                <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
-                                <?php
-                                    require_once("../modelo/connect.php");
-                                    $consulta = "SELECT * FROM usuarios WHERE estatus='Activo'";
-                                    $resultado = $conexion->query($consulta);
-                                    while($fila=$resultado->fetch_assoc()){
-                                    echo "<li class='nav-item'> <input type='checkbox' class='check' name='cliente[]' value='". $fila['cliente']."'> "  . $fila['cliente']."</li>";
-                                    }
-                                    $conexion->close();
-                                    ?>    
+                                    <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
+                                        
+                                        <ul  class="nav flex-column m-3" id="myUl">
+                                        <?php
+                                            require_once("../modelo/connect.php");
+                                            $consulta = "SELECT * FROM usuarios WHERE estatus='Activo'";
+                                            $resultado = $conexion->query($consulta);
+                                            while($fila=$resultado->fetch_assoc()){
+                                            echo "<li class='nav-item'><a href='#' class='alist'> <input type='checkbox' class='check' name='cliente[]' value='". $fila['cliente']."'/> "  . $fila['cliente']."</a></li>";
+                                            }
+                                            $conexion->close();
+                                            ?>   
+                                        </ul> 
                                 </ul>
                             </nav>
 
@@ -198,10 +206,7 @@ include("menu.php");
                 </div>
             </div>
 
-            <div class="col-md-12 my-5" style="text-align:center">
-                <button class="btn btn-send btn-col1 m-1" name="createVendedor" type="submit">CREAR VENDEDOR</button>
-                
-                    
+            
 <!--
                 <div class=" box-select my-5">
                     <nav>
@@ -215,8 +220,6 @@ include("menu.php");
                 </div>
                                 -->
                 
-
-            </div>
         </div>
         </form>
     </section>
@@ -257,11 +260,6 @@ include("menu.php");
     <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script>
-        function limpiarFormulario() {
-            document.getElementById("resetear").reset();
-        };
-    </script>
 </body>
 </html>
 

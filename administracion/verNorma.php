@@ -31,7 +31,7 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+                    <a class="nav-link" href="crearUsuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="cliente.html">CLIENTES</a>
@@ -42,7 +42,7 @@ include("menu.php");
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link active" href="#">NORMAS</a>
                 </li>
             </ul>
         </div>
@@ -51,14 +51,7 @@ include("menu.php");
         <div class="mrg">
             <ul class="nav container">
                 <li class="nav-item">
-                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                    <a class="nav-link " href="#">AGREGAR NORMA</a>
                 </li>
 
             </ul>
@@ -75,7 +68,7 @@ include("menu.php");
 
 
   <section class="user-create container">
-
+  <h1 class="user-text text-center">NORMA</h1>
   <?php
  $norma = $_POST['norma'];
 
@@ -137,8 +130,89 @@ $fila=$resultado->fetch_assoc();
 </form>
 
 
+<!--  NEW -->
+    <div class="row mt-5">
+        <div class="col-md-6">       
+            <div class="input-group mb-3">
+                <span class="client-span">DOCUMENTO:</span>
+                <input  value="GMW93"  class="form-control" readonly>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <span class="client-span">SDO - ORG:</span>
+                <input  value="ISO"  class="form-control" readonly>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group mb-3">
+                <span class="client-span">TITULO:</span>
+                <input  value="ISO"  class="form-control" readonly>
+            </div>
+        </div>
 
+        <div class="col-md-6">       
+            <div class="input-group mb-3">
+                <span class="client-span">REVISIÓN ACTUAL:</span>
+                <input  value="15/05/2018"  class="form-control" readonly>
+            </div>
+            <div class="row"> 
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">R:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">E:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">STBZ:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
 
+                 <div class="input-group my-2  col-md-4">
+                    <span class="client-span">CRGD:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">ADD:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">TC:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+
+                 <div class="input-group my-2  col-md-4">
+                    <span class="client-span">AMD:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+                <div class="input-group my-2  col-md-4">
+                    <span class="client-span">ERTA:</span>
+                    <input  value="ISO"  class="form-control" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <p>OBSERVACIÓN DE LA NORMA:</p>
+                <textarea class="form-control hgarea" aria-label="With textarea" name=""></textarea>
+            </div>
+        </div>
+        <div class="col-md-12 m-4 txt-center">
+            <form method="post" action="editarNorma.php">
+                <input type="hidden" name="norma" value="<?php echo $norma; ?>">
+                <input type="submit" class="btn btn-send btn-col1 m-1" name="editarNorma" value="EDITAR">
+            </form>  
+                   
+        </div>
+
+        <div class="col-md-12" style="text-align:center; margin: 50px 0;">
+            <a href="contratos.php" class="col-boton" style="margin: 0 auto;">VOLVER A CONTRATOS</a>
+        </div>
+
+    </div>     
+<!-- FIN -->   
   </section>
 
 

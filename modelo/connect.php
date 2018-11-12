@@ -10,7 +10,8 @@
  	echo "la conexion fallo". $conexion -> connect_errno;
  }else{
 
- 	echo "la conexion fue exitosa";
+	 echo  " ";
+	 
  }
 
 ?>

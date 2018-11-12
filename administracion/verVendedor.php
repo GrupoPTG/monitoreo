@@ -54,11 +54,15 @@ include("menu.php");
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
+                        <a class="dropdown-item" href="crearVendedor.php    ">VENDEDOR</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
                 </li>
 
             </ul>
@@ -90,25 +94,42 @@ $fila=$resultado->fetch_assoc();
 ?>
 
 
-<form  method="post" action="#">
 
-<label>Nombre del Vendedor</label><br>
-  <input type="text" name="vendedor" value="<?php echo $nomVendedor ?>"><br>
+<section class="user-create container">
+    <h1 class="user-text text-center">Vendedor</h1>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                
+                <div class="input-group mb-3">
+                    <span class="client-span">Nombre del Vendedor:</span>
+                    <input  value="<?php echo $nomVendedor   ?>"  class="form-control" readonly>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="client-span">Telefono:</span>
+                    <input  value="<?php echo $telefono   ?>"  class="form-control" readonly>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="client-span">Pais:</span>
+                    <input  value="<?php echo $territorio   ?>"  class="form-control" readonly>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="client-span">Correo Electronico:</span>
+                    <input  value="<?php echo $email   ?>"  class="form-control" readonly>
+                </div>
+
+                <div class="input-group mb-3">
+                        <span class="client-span">Clave:</span>
+                        <input  value="<?php echo $pass   ?>"  class="form-control" readonly>
+                    </div>
 
 
-<label>Usuario</label><br>
-  <input type="text" name="correo" value="<?php echo $email ?>"><br>
-
-<label>Clave</label><br>
-  <input type="text" name="correo" value="<?php echo $pass ?>"><br>
-
-<label>Telefono</label><br>
-  <input type="text" name="telefono" value="<?php echo $telefono ?>"><br>
-
-
-<label>Pais</label><br>
-  <input type="text" name="telefono" value="<?php echo $territorio ?>"><br>
-
+            </div>
+        </div>
 
 
 
@@ -118,9 +139,9 @@ $fila=$resultado->fetch_assoc();
 
         
         
-<br><br>
-<label>Clientes:</label>
-<br>
+
+<span class="client-span">CLIENTES:</span>
+
 
 <?php
 
@@ -129,19 +150,19 @@ require_once("../modelo/connect.php");
 $consulta = "SELECT * FROM vendedorcliente WHERE vendedor='$vendedor'";
 
 ?>
-           <div style="width: 90%; margin:0 auto; font-size: 13px;" >
+           <div style=" font-size: 13px;" >
           <?php
 
 $hacerconsulta = $conexion->query($consulta);
                    
   
-                  echo "<table class='table-sm table-striped' style='width:100%;'>";
-                  echo "<tr>";
+                  echo "<div class='col-md-12 row'>";
+
                   
-                  echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
+              
                  
                   
-                  echo "</tr>";
+
                   
                   
     //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
@@ -149,17 +170,14 @@ $hacerconsulta = $conexion->query($consulta);
                   
                   while ($reg)
                   {
-                  echo "<tr>";
-                  echo "<td align='center' >".$reg[2]."</td>";
-
-                  
+                  echo "<input class='form-control col-md-3' style='margin: 10px 0;' placeholder='Nombre de Contacto'  readonly value=". $reg[2]." > ";
 
 
     //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
     $reg=$hacerconsulta->fetch_array();
-                  echo "</tr>";
+
                   }
-                  echo "</table>";
+  
                   $conexion->close();
 
                   ?>
@@ -168,27 +186,14 @@ $hacerconsulta = $conexion->query($consulta);
 
 ?>
 
+<div class="col-md-12" style="text-align:center; margin: 50px 0;">
+                <a href="vendedores.php" class="col-boton" style="margin: 0 auto;">VOLVER A LA LISTA</a>
+            </div>
 
-            <div style="text-align:center;"><a href="vendedores.php">Volver</div>
+         
   <br>
- 
 
-</form>
-
-
-
-
-
-
-
-
-
-
-
-  </section>
-
-
-
+</section>
 
 
     <script src="../js/jquery.min.js"></script>

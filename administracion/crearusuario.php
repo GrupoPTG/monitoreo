@@ -58,9 +58,12 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="editUser.php">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -159,13 +162,13 @@ include("menu.php");
         </div>
         <div class="col-md-12 row">
             <div class="input-group wd-1 m-1">
-                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" >
+                <input type="text"  class="form-control" placeholder="Nombre"  name="nombreContacto[]" required>
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
             </div>
             <div class="input-group wd-1 m-1">
-                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
+                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  required>
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">*</span>
                 </div>
@@ -174,16 +177,14 @@ include("menu.php");
             <div class="input-group wd-1 m-1 clonedInput">
                 <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
             <div class="input-group wd-1 m-1 clonedInput">
                 <input type="text"  class="form-control" placeholder="Cargo" name="cargo[]" >
                 <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">*</span>
+                    <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
-                
-                
 
             </div>
             
@@ -200,7 +201,7 @@ include("menu.php");
                 
                 <p>Número de contrato</p>
                 <div class="input-group mb-3">
-                    <input type="number"  class="form-control" name="numeroContrato" >
+                    <input type="text"  class="form-control" name="numeroContrato" >
                 </div>
                 
                 <div class="row">
@@ -232,74 +233,65 @@ include("menu.php");
                     <textarea class="form-control hgarea" aria-label="With textarea" name="descripcionCliente"></textarea>
                 </div>
             </div>
-    
-        </div>
-<!--
-        <div class="row my-5">
-            <h5>CARGAR UNA FOTO</h5>
-        </div>
-        <div class="col-md-12 row">
-            <div class="col-md-2">
-                <div class="box-img">
-                    <img src="assets/img/photo.png" alt="" class="box-img-cont">
+            <!--
+            <div class="row my-5">
+                <h5>CARGAR UNA FOTO</h5>
+            </div>
+            <div class="col-md-12 row">
+                <div class="col-md-2">
+                    <div class="box-img">
+                        <img src="assets/img/photo.png" alt="" class="box-img-cont">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <p>Seleccione un archivo</p>
+                    <p>.jpg o .png</p>
+                    <div class="custom-file wd-1">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Cargar imagen</label>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <p>Seleccione un archivo</p>
-                <p>.jpg o .png</p>
-                <div class="custom-file wd-1">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile">
-                    <label class="custom-file-label" for="validatedCustomFile">Cargar imagen</label>
-                </div>
-            </div>
-        </div>
-    -->
-
-
-
-
-
-
-
+            -->
 <?php
 require_once("../modelo/connect.php");
 $consulta = "SELECT * FROM vendedor";
 $resultado = $conexion->query($consulta);
 ?>
 
-            <br>
-            <label>Vendedor:</label>
+            <div class="col-md-6">
 
-            <?php
-              echo "<select name='vendedor' style='height:30px; margin-bottom:15px;'>";
-              echo "<option>Seleccionar Vendedor</option>";  
-            ?>
-              <!--<option>Seleccionar..</option>-->
-            <?php                     
-              while($fila=$resultado->fetch_assoc())
-              {               
-                  echo "<option>".$fila['nombre']."</option>";
-              }
-            echo "</select>";
-
-            
-?>    
-
-
+            <p>Vendedor:</p>
+            <div class="input-group mb-1">
+                <?php
+                echo "<select class='custom-select' name='vendedor'>";
+                    echo "<option>Seleccionar Vendedor</option>";  
+                    ?>
+                    <!--<option>Seleccionar..</option>-->
+                    <?php                     
+                    while($fila=$resultado->fetch_assoc())
+                    {               
+                        echo "<option>".$fila['nombre']."</option>";
+                    }
+                echo "</select>";            
+                ?>    
+            </div>
 
 
 
 
+</div>
 
 
 
 
-
+        <div class="col-md-12">
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
                 <button class="btn btn-send btn-col1 m-1" type="submit" name="registrarCliente">CREAR</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
+        </div>
         </div>
     </form>
   </section>

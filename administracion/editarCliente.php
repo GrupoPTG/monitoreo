@@ -58,7 +58,12 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="editUser.php">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
+                </li>
                 </li>
 
             </ul>
@@ -101,17 +106,13 @@ include("menu.php");
                 <p>Nombre del Cliente</p>
                 <div class="input-group mb-3">
                     <input type="text"  class="form-control"  name="cliente" value="<?php echo $cliente; ?>" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">*</span>
-                    </div>
+  
                 </div>
 
                 <p>Correo Electrónico</p>
                 <div class="input-group mb-3">
                     <input type="email"  class="form-control"  name="correoElectronico" value="<?php echo $email; ?>">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">*</span>
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -143,7 +144,6 @@ include("menu.php");
                             <select class="custom-select" name="idioma" required>
                               <option>Espanol</option>
                               <option>Portuges</option>
-                              <option>Ingles</option>
                             </select>
                             <div class="input-group-append">
                                 <label class="input-group-text" for="#">*</label>
@@ -162,25 +162,19 @@ include("menu.php");
                 <p>Usuario</p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control"  name="usuarioCliente" value="<?php echo $usuarioCliente; ?>">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">*</span>
-                    </div>
+
                 </div>
 
                 <p>Password</p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control"  name="pass" value="<?php echo $pass; ?>">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">*</span>
-                    </div>
+
                 </div>
 
                 <p>Dirección</p>
                 <div class="input-group">
                     <textarea class="form-control hgarea" type="text" aria-label="With textarea" name="direccion"><?php echo $direccion; ?></textarea>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">* </span>
-                    </div>
+   
                 </div>
 
             </div>

@@ -40,27 +40,7 @@ $largo=5;
 require ("../modelo/connect.php");
   //Consulta Registrar Usuario
   if($conexion->query($registrarVendedor)!==False){
-    ?>
-    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:700px;" >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" onclick="cerrarVentana()">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              El Vendedor fue registrado con exito
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
+      echo "El Vendedor fue registrado con exito";
   }else{
       echo "El Vendedor no fue registrado por favor consulte con el administrador";
   }

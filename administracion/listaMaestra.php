@@ -31,7 +31,7 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+                    <a class="nav-link active" href="crearUsuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="cliente.html">CLIENTES</a>
@@ -51,16 +51,14 @@ include("menu.php");
         <div class="mrg">
             <ul class="nav container">
                 <li class="nav-item">
-                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
-                    </div>
+                    <a class="nav-link " href="#">INFORMACIÓN GENERAL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                    <a class="nav-link active" href="listaMaestra.php">LISTA MAESTRA</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#">REPORTES</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -84,10 +82,7 @@ if(isset($_POST['asignarNorma'])){
 
 
   <section class="user-create container">
-  <br><br>
-Lista Maestra de Normas
-
-
+    <h1 class="user-text text-center">LISTA MAESTRA</h1>
 <?php
 
 
@@ -95,39 +90,57 @@ require_once("../modelo/connect.php");
 
  $cliente = $_POST['cliente'];
 
-
 $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
    $resultado = $conexion->query($sql);
    $fila=$resultado->fetch_assoc();
-   echo "<br><br>";
- echo "Cliente:".$nombreCliente= $fila['cliente'];
+?>
 
-
-
+   <div class="row mt-5">
+        <div class="col-md-6">
+            <?php
+   echo "<h5>".$nombreCliente= $fila['cliente']."</h5>";
+            ?>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group ">
+                <input type="text" id="searchTerm" class="form-control" placeholder="Buscar" onkeyup="doSearch()" />
+                <span class="input-group-btn">
+                <button class="btn btn-search" type="button">
+                    <img src="../assets/img/magnifier.png" class="calen-img" alt="">
+                </button>
+                </span>
+            </div>
+            <div style="float: right;"><p>TOTAL DE NORMAS: 3</p></div>
+        </div>
+    </div>
+<?php
    $consulta = "SELECT * FROM normacliente WHERE cliente='$cliente'";
 
    ?>
-			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
+			 		<div style="font-size: 13px;" >
 					<?php
 
           $hacerconsulta = $conexion->query($consulta);
 							 
 			
-							echo "<table class='table-sm table-striped' style='width:100%;'>";
-							echo "<tr>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Id</b></font></td>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>SDO/ORG</b></font></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Documento</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Titulo</b></td>";
-							echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Revision Cliente</b></td>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Revision Actual</b></td>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Estatus Norma</b></td>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Estatus del Cliente</b></td>";
-              echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Observaciones</b></td>";
-            
-							echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-							
-							echo "</tr>";
+                            echo "<table class='table table-bordered' id='datos'>";
+                            echo "<thead class='bck-thead txt-center'>";
+                            echo "<tr>";
+                            echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
+                            echo "<th > ID</font></th>";
+                            echo "<th > SDO/ORG</font></th>";
+							echo "<th > DOCUMENTO</th>";
+							echo "<th > TITULO</th>";
+							echo "<th > REVISIÓN CLIENTE</th>";
+                            echo "<th > REVISIÓN ACTUAL</th>";
+                            echo "<th > ESTATUS NORMA</th>";
+                            echo "<th > ESTATUS DEL CLIENTE</th>";
+                            echo "<th > OBSERVACIONES</th>";
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            echo "<tr>";
+                            echo "</tr>";	
 							
 							
               //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
@@ -136,7 +149,7 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 							while ($reg)
 							{
 							echo "<tr>";
-                            echo "<td align='center' >".$reg[0]."</td>";
+                            echo "<td align='center' ><input type='checkbox' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'></td>";
                             echo "<td align='center' >".$reg[3]."</td>";
 							echo "<td align='center' >".$reg[1]."</td>";
 							echo "<td align='center' >".$reg[4]."</td>";
@@ -148,10 +161,10 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 							
 
 
-							echo "<td  align='center' style='border: inset 0pt'>				
+							echo "<td  align='center''>				
 								<form action='verNorma.php' method='post'>			
 									<input type='hidden' name='norma' value=".$reg[1].">
-									<input type='image' name='imageField' src='../img/view.gif' />
+									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px' />
 								</form>				
 							</td>";//FIN DEL echo
 
@@ -172,33 +185,53 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 ?>
 
 
-
-
-
-
-
-
-
-
-<br><br><br>
 <form method="post" action="#">
-        <ul class="nav flex-column m-3">
-        <li class="nav-item my-3"><input type="text" value="Buscar norma"></li>
 
-        <li class="nav-item my-3">
-        <input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
-            <?php
-                require_once("../modelo/connect.php");
-                $consulta = "SELECT * FROM normas";
-                $resultado = $conexion->query($consulta);
-                while($fila=$resultado->fetch_assoc()){
-                    echo "<li class='nav-item'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'> "  . $fila['documento']."</li>";
-                }
-                                    
-             ?>    
-        </ul>
-        <input type='hidden' name='cliente' value="<?php echo $cliente ?>">
+ <div class="col-md-6">
+                <div class="box-vend">
+                    <div class="menu-down p-4">
+                        <ul class="nav nav-tabs container">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Clientes</a>
+                            </li>
+                        </ul>
+
+                        <div class="input-group py-3">
+                            <input type="text" class="form-control" id="datos2" placeholder="Buscar" onkeyup="doSearchLi()"/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-search" type="button">
+                                    <img src="../assets/img/magnifier.png" class="calen-img" alt="">
+                                </button>
+                            </span>
+                        </div>
+
+                        <div class="box-search">
+                            <nav>
+                                <ul class="nav flex-column m-3">
+                                    <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
+                                        
+                                        <ul  class="nav flex-column m-3" id="myUl">
+                                        <?php
+                                            require_once("../modelo/connect.php");
+                                            $consulta = "SELECT * FROM normas";
+                                            $resultado = $conexion->query($consulta);
+                                            while($fila=$resultado->fetch_assoc()){
+                                                echo "<li class='nav-item'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'> "  . $fila['documento']."</li>";
+                                            }
+                                                                
+                                        ?> 
+                                        </ul>
+                                </nav>
+                                
+                        </div>
+                        <input type='hidden' name='cliente' value="<?php echo $cliente ?>">
         <input type="submit" name="asignarNorma" value="Asignar Norma">
+ </div>
+</div>
+</div>
+
+
+
 </form>
 
 
@@ -217,6 +250,7 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 
 
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script>

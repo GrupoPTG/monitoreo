@@ -30,7 +30,7 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link " href="crearusuario.php">USUARIOS</a>
+                    <a class="nav-link " href="crearUsuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#">CLIENTES</a>
@@ -50,10 +50,10 @@ include("menu.php");
         <div class="mrg">
             <ul class="nav container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">DATOS PERSONALES</a>
+                    <a class="nav-link active" href="#">INFORMACIÓN GENERAL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LISTA MAESTRA</a>
+                    <a class="nav-link" href="listaMaestra.php">LISTA MAESTRA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">REPORTES</a>
@@ -140,16 +140,8 @@ $fila=$resultado->fetch_assoc();
                 </div>
             </div>
 
-            <span class="client-span">FIN DE CONTRATO:</span>
-   
-
-
-
-    
-
-
-
-      
+            <span class="client-span">CONTACTOS:</span>
+         
                 <?php
                     $consulta = "SELECT * FROM contactos WHERE cliente='$usuario'";
 

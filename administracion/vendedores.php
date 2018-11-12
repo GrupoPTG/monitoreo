@@ -54,11 +54,15 @@ include("menu.php");
                     <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
+                        <a class="dropdown-item" href="crearVendedor.php   ">VENDEDOR</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
                 </li>
 
             </ul>
@@ -66,7 +70,26 @@ include("menu.php");
     </div>
 
 
-  <section class="user-create container">
+      <section class="vendedor container">
+        <h1 class="user-text text-center">LISTA DE VENDEDORES</h1>
+
+
+        <div class="row my-5">
+            <div class="col-md-6">
+                <h5>VENDEDORES CREADOS</h5>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group ">
+                    <input type="text" id="searchTerm" class="form-control" placeholder="Buscar" onkeyup="doSearch()" />
+                    <span class="input-group-btn">
+                      <button class="btn btn-search" type="button">
+                          <img src="../assets/img/magnifier.png" class="calen-img" alt="">
+                      </button>
+                  </span>
+                </div>
+            </div>
+
+        </div>
  <?php
  require_once("../modelo/connect.php");
 
@@ -84,23 +107,27 @@ include("menu.php");
  $consulta = "SELECT * FROM vendedor";
 
  ?>
-                   <div style="width: 90%; margin:0 auto; font-size: 13px;" >
+                   <div style="font-size: 13px;" >
                   <?php
 
         $hacerconsulta = $conexion->query($consulta);
-                           
+
+                        echo "<table class='table table-bordered' id='datos'>";
+                        echo "<thead class='bck-thead txt-center'>";
+                        echo "<tr>";
+                        echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
+                        echo "<th> ID </th>";
+                        echo "<th>VENDEDOR</th>";
+                        echo "<th>CORREO ELECTRÓNICO </th>";
+                        echo "<th> DIRECCIÓN</th>";
+                        echo "<th>PAIS</th>";
+                        echo "<th> OPCIONES </th>";
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        echo "<tr>";
+                        echo "</tr>";
           
-                          echo "<table class='table-sm table-striped' style='width:100%;'>";
-                          echo "<tr>";
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Id</b></font></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Email Cliente</b></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Direccion</b></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Pais</b></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-                          
-                          echo "</tr>";
-                          
                           
             //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
             $reg=$hacerconsulta->fetch_array();
@@ -108,6 +135,10 @@ include("menu.php");
                           while ($reg)
                           {
                           echo "<tr>";
+                          echo "<td style='text-align: center'>                            
+                          <input type='checkbox'  aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'>
+                          </form>
+                          </td>";
                           echo "<td align='center' >".$reg[0]."</td>";
                           echo "<td align='center' >".$reg[1]."</td>";
                           echo "<td align='center' >".$reg[2]."</td>";
@@ -116,31 +147,26 @@ include("menu.php");
 
                           
                           echo "
-                          <td  align='center' style='border: inset 0pt'>				
-								<form action='#' method='post'>			
-                                    <input type='hidden' name='idUser' value=".$reg[0].">
-                                    <input type='hidden' name='delete'>
-									<input type='image' name='imageField' src='../img/trash-can.png' width='20px' />
-                                </form>                                				
-                            </td>
-                            
-                            <td  align='center' style='border: inset 0pt'>				
-                              <form action='editarVendedor.php' method='post'>			
+                          <td  align='center' >				
+                          <form action='verVendedor.php' method='post' class='btn-table'>			
+                                <input type='hidden' name='idUser' value=".$reg[0].">
+                                <input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px' />
+                            </form>    
+                            <form action='editarVendedor.php' method='post' class='btn-table'>			
                                   <input type='hidden' name='idUser' value=".$reg[0].">
-                                  <input type='image' name='imageField' src='../img/edit.gif' />
-                              </form>				
-                          </td>
-                          
-                          <td  align='center' style='border: inset 0pt'>				
-                          <form action='verVendedor.php' method='post'>			
-                              <input type='hidden' name='idUser' value=".$reg[0].">
-                              <input type='image' name='imageField' src='../img/view.gif' />
-                          </form>                                				
-                        </td>
+                                  <input type='image' name='imageField' src='../assets/img/edit-draw-pencil.png' width='20px' />
+                              </form>	
+
+                            <form action='#' method='post' class='btn-table'>			
+                                <input type='hidden' name='idUser' value=".$reg[0].">
+                                <input type='hidden' name='delete'>
+                                <input type='image' name='imageField' src='../img/trash-can.png' width='20px' />
+                            </form>     
+                            </td>
                           ";//FIN DEL echo
 
                           
-                  
+                            
 
 
             //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
@@ -161,6 +187,7 @@ include("menu.php");
 
 
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script>

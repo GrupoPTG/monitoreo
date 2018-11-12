@@ -51,14 +51,18 @@ include("menu.php");
         <div class="mrg">
             <ul class="nav container">
                 <li class="nav-item">
-                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
+                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
+                        <a class="dropdown-item" href="crearVendedor.php">VENDEDOR</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item " href="vendedores.php">VENDEDOR</a>
+                    </div>
                 </li>
 
             </ul>
@@ -176,61 +180,72 @@ $fila=$resultado->fetch_assoc();
      $territorio =$fila['territorio'];
 ?>
 
-
+  <section class="user-create container">
 <form  method="post" action="#">
+    <div class="row my-5">
+        <h5>DATOS DEL CLIENTE</h5>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Nombre del Cliente</p>
+            <div class="input-group mb-3">
+                <input type="text"  class="form-control"  name="vendedor" value="<?php echo $nomVendedor; ?>" >
+            </div>
+            <p>Clave</p>
+            <div class="input-group mb-3">
+                <input type="text"  class="form-control"  name="pass" value="<?php echo $pass; ?>" >
+            </div>
+            <p>Pais</p>
+            <div class="input-group mb-1">
+                <select class="custom-select" name="territorio" >
+                    <option>Brasil</option>
+                    <option>Venezuela</option>
+                    <option>Argentina</option>
+                    <option>Bolivia</option>
+                    <option>Brasil</option>
+                    <option>Chile</option>
+                    <option>Colombia</option>
+                    <option>Ecuador</option>
+                    <option>Panama</option>
+                    <option>Peru</option>
+                    <option>Paraguay</option>
+                    <option>Uruguay</option>
+                    <option>Mexico</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p>Correo Electrónico</p>
+            <div class="input-group mb-3">
+                <input type="email"  class="form-control"  name="correo" value="<?php echo $email; ?>">
 
-<label>Nombre del Vendedor</label><br>
-  <input type="text" name="vendedor" value="<?php echo $nomVendedor ?>"><br>
+            </div>
 
+            <p>Telefono</p>
+            <div class="input-group mb-3">
+                <input type="text"  class="form-control"  name="telefono" value="<?php echo $telefono; ?>" >
+            </div>
+        </div>
+    </div>
 
-<label>Usuario</label><br>
-  <input type="text" name="correo" value="<?php echo $email ?>"><br>
-
-<label>Clave</label><br>
-  <input type="text" name="pass" value="<?php echo $pass ?>"><br>
-
-<label>Telefono</label><br>
-  <input type="text" name="telefono" value="<?php echo $telefono ?>"><br>
-
-
-<label>Pais</label><br>
-  <input type="text" name="pais" value="<?php echo $territorio ?>"><br>
-
-
-
-
-  
 
 
 
         
         
 <br><br>
-<label>Clientes:</label>
+<h5>CLIENTES:</h5>
 <br>
 
-<ul>
+
    <?php
 
         require_once("../modelo/connect.php");
 
         $consulta = "SELECT * FROM vendedorcliente WHERE vendedor='$vendedor'";
 
- ?>
-                   <div style="width: 90%; margin:0 auto; font-size: 13px;" >
-                  <?php
-
         $hacerconsulta = $conexion->query($consulta);
-                           
-          
-                          echo "<table class='table-sm table-striped' style='width:100%;'>";
-                          echo "<tr>";
-                          
-                          echo "<td align='center' bgcolor='#e8e8e8'><b><font color='black'>Cliente</b></td>";
-                          echo "<td align='center' bgcolor='#e8e8e8'style='border: inset 0pt;'></td>";
-                          
-                          echo "</tr>";
-                          
+
                           
             //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
             $reg=$hacerconsulta->fetch_array();
@@ -238,6 +253,8 @@ $fila=$resultado->fetch_assoc();
                           while ($reg)
                           {
                           echo "<tr>";
+                          echo "<table class='table table-bordered'>";
+                          echo "<tbody>";
                           echo "<td align='center' >".$reg[2]."</td>";
 
                           
@@ -250,14 +267,7 @@ $fila=$resultado->fetch_assoc();
                                 </form>                                				
                             </td>
                             
-     
-                          
-                          
                           ";//FIN DEL echo
-
-                          
-                  
-
 
             //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
             $reg=$hacerconsulta->fetch_array();
@@ -267,39 +277,16 @@ $fila=$resultado->fetch_assoc();
                           $conexion->close();
 
                           ?>
-                              </div>
-                          <?php
-
-   ?>
-
-
-
-
-
-
+                    
+            <div class="row m-5">
+                <div class="col-md-12 txt-center ">
+                    <input type="hidden" value="<?php echo $vendedor?>" name="idUser">
+                    <button class="btn btn-send btn-col1 m-1" type="submit" name="actualizar">EDITAR</button>
+                   
+                </div>
+            </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </ul>
-            <input type="hidden" value="<?php echo $vendedor ?>" name="idUser"> 
-            <input type="submit" value="Guardar" name="actualizar">
-            <br><br>
-  <br>
  
 
 </form>

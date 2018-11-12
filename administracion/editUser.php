@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
+    <style>
+    .oculto{
+        display:none;
+    }
+    </style>
 </head>
 <body>
 
@@ -58,7 +63,11 @@ include("menu.php");
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="editUser.php">EDITAR USUARIO</a>
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
+                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
+                    </div>
                 </li>
 
             </ul>
@@ -76,36 +85,15 @@ include("menu.php");
             </div>
             <div class="col-md-6">
                 <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="Buscar" />
+                    <input type="text" id="searchTerm" class="form-control" placeholder="Buscar" onkeyup="doSearch()" />
                     <span class="input-group-btn">
                       <button class="btn btn-search" type="button">
                           <img src="../assets/img/magnifier.png" class="calen-img" alt="">
                       </button>
-                  </span>
+                    </span>
                 </div>
             </div>
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 
@@ -138,22 +126,16 @@ if(isset($_POST['usersID'])){
     echo "Usuarios eliminados";
 }
 
-
-
-
-
-
-
 $consulta = "SELECT * FROM usuarios";
 
 ?>
-    <div style="width: 90%; margin:0 auto; font-size: 13px;" >
-    <form method='post' action='#' name='myForm'><!--Formualrio CheckList-->
+    <div style=" font-size: 13px;" >
+    <form method='post' action='#' name='myForm'>
 <?php
 
     $hacerconsulta = $conexion->query($consulta);
 							
-        echo "<table class='table table-bordered'>";
+        echo "<table class='table table-bordered' id='datos'>";
         echo "<thead class='bck-thead txt-center'>";
 		echo "<tr>";
         echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
@@ -167,9 +149,6 @@ $consulta = "SELECT * FROM usuarios";
         echo "</thead>";
         echo "<tbody>";
         echo "<tr>";
-        echo "<td colspan='8'>";
-        echo "<a href='crearusuario.php' class='btn btn-send btn-send-edit fwb btn-col1 col-md-12'>AGREGAR UN NUEVO VENDEDOR<i class='fas fa-plus plus-table'></i></a>";
-        echo "</td>";
         echo "</tr>";		
 
 							
@@ -192,7 +171,7 @@ $consulta = "SELECT * FROM usuarios";
 
 
             echo "
-                <td  align='center' style='border: inset 0pt'>
+                <td  align='center' >
 
                 <form action='verUsuario.php' method='post' class='btn-table'>			
                     <input type='hidden' name='idUser' value=".$reg[0].">
@@ -263,15 +242,10 @@ function myFunction() {
 }
 </script>
 
-
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script>
-        function limpiarFormulario() {
-            document.getElementById("resetear").reset();
-        };
-    </script>
 </body>
 </html>
 
