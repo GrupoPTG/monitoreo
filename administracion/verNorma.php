@@ -31,7 +31,7 @@ include("menu.php");
         <div class="menu-down">
             <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
+                    <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="contratos.php">CLIENTES</a>
@@ -42,7 +42,7 @@ include("menu.php");
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="normas.php">NORMAS</a>
+                    <a class="nav-link active" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>

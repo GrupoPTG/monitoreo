@@ -10,7 +10,22 @@ if(isset($_POST['asignarNorma'])){
   $cliente = $_POST['cliente'];
 
 if($cliente=="Seleccionar.."){
-  echo "DEBE SELECCIONAR UN CLIENTE PARA CARGAR UNA NORMA";
+  ?>
+  <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+      <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+        <div class="modal-content">
+          <div class="modal-body">
+          DEBE SELECCIONAR UN CLIENTE PARA CARGAR UNA NORMA
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+
 }else{
 
    $sql = "SELECT * FROM usuarios WHERE cliente='$cliente'";
@@ -49,7 +64,23 @@ if($cliente=="Seleccionar.."){
           $resultado2 = $conexion->query($sql2);
           $rowcount=mysqli_num_rows($resultado2);
           if($rowcount>0){
-            echo "EL CLIENTE YA POSEE LA NORMA ". $listaNormas."<br>";
+            ?>
+            <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                    <?php  echo "EL CLIENTE YA POSEE LA NORMA ". $listaNormas."<br>"; ?>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+                      <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php
+
+           
           }else{
             
             $asignarNormas = "INSERT INTO normacliente VALUES (
@@ -73,8 +104,22 @@ if($cliente=="Seleccionar.."){
         
         
             $registroVendedor = $conexion->query($asignarNormas);
-
-            echo "LA NORMA " . $listaNormas. " FUE AGREGADA A LA LISTA MAESTRA DEL CLIENTE";
+            ?>
+            <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                    <?php  echo "LA NORMA " . $listaNormas. " FUE AGREGADA A LA LISTA MAESTRA DEL CLIENTE"; ?>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+                      <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php
+            
           }//fiN Revision si el cliente tiene la norma
     
 

@@ -29,19 +29,19 @@ include("menu.php");
     <div class="menu ">
         <div class="menu-down">
             <ul class="nav nav-tabs container">
-                <li class="nav-item">
-                    <a class="nav-link " href="crearUsuario.php">USUARIOS</a>
+            <li class="nav-item">
+                    <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link active" href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>

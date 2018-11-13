@@ -30,45 +30,23 @@ include("menu.php");
     <div class="menu ">
         <div class="menu-down">
             <ul class="nav nav-tabs container">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+            <li class="nav-item">
+                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="sub-menu">
-        <div class="mrg">
-            <ul class="nav container">
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="crearVendedor.php">VENDEDOR</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
-                        <a class="dropdown-item " href="vendedores.php">VENDEDOR</a>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-
 
   <section class="user-create container">
 
@@ -77,11 +55,7 @@ include("menu.php");
 <?php
 
 if(isset($_POST['actualizar'])){
-
-echo "EL USUARIO FUE ACTUALIZADO CON EXITO <br><br>";
-
-    $idUsuario= $_POST['idUser']; 
-
+   $idUsuario= $_POST['idUser']; 
    $nombreVendedor= $_POST['vendedor'];
    $emailCliente=$_POST['correo'];
    $pass= $_POST['pass'];
@@ -111,9 +85,38 @@ echo "EL USUARIO FUE ACTUALIZADO CON EXITO <br><br>";
  require_once("../modelo/connect.php");
    //Consulta Actualizar Usuario
    if($conexion->query($actualizarUsuario)!==False){
-       echo "El Usuario fue actualizado con exito";
+    ?>
+    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+          <div class="modal-content">
+            <div class="modal-body">
+            El Usuario fue actualizado con exito
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
    }else{
-       echo "El Usuario no fue actualizado por favor consulte con el administrador";
+    ?>
+    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+          <div class="modal-content">
+            <div class="modal-body">
+            El Usuario no fue actualizado por favor consulte con el administrador
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+
    }  
  
    /*
@@ -254,11 +257,11 @@ $fila=$resultado->fetch_assoc();
                           echo "<tr>";
                           echo "<table class='table table-bordered'>";
                           echo "<tbody>";
-                          echo "<td align='center' >".$reg[2]."</td>";
+                          echo "<td align='center' class='col-md-10'>".$reg[2]."</td>";
 
                           
                           echo "
-                          <td  align='center' style='border: inset 0pt'>				
+                          <td  align='center' class='col-md-2' style='border: inset 0pt'>				
 								<form action='#' method='post'>			
                                     <input type='hidden' name='idUser' value=".$reg[1].">
                                     <input type='hidden' name='delete'>
@@ -307,6 +310,7 @@ $fila=$resultado->fetch_assoc();
 
 
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script>

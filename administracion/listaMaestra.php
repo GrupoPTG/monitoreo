@@ -31,10 +31,10 @@ include("menu.php");
         <div class="menu-down">
         <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
+                    <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="contratos.php">CLIENTES</a>
+                    <a class="nav-link active" href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
@@ -54,7 +54,7 @@ include("menu.php");
                     <a class="nav-link " href="#">INFORMACIÓN GENERAL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="listaMaestra.php">LISTA MAESTRA</a>
+                    <a class="nav-link active" href="#">LISTA MAESTRA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">REPORTES</a>
@@ -158,8 +158,7 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
                             echo "<table class='table table-bordered' id='datos'>";
                             echo "<thead class='bck-thead txt-center'>";
                             echo "<tr>";
-                            echo "<th><img src='../assets/img/check (1).png' class='wdt-form' alt=''></th>";
-                            echo "<th > ID</font></th>";
+                            echo "<th><input type='checkbox'  class='check' id='checkAll'></th>";
                             echo "<th > SDO/ORG</font></th>";
 							echo "<th > DOCUMENTO</th>";
 							echo "<th > TITULO</th>";
@@ -181,7 +180,7 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 							while ($reg)
 							{
 							echo "<tr>";
-                            echo "<td align='center' ><input type='checkbox' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'></td>";
+                            echo "<td align='center' ><input type='checkbox' class='check' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'></td>";
                             echo "<td align='center' >".$reg[3]."</td>";
 							echo "<td align='center' >".$reg[1]."</td>";
 							echo "<td align='center' >".$reg[4]."</td>";
@@ -225,17 +224,7 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
                     <div class="col-md-6 p-0">
                         <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
                     </div>
-                    <div class="col-md-6 p-0 d-flex justify-content-end">
-                        <nav aria-label="Page navigation ">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link clpg" href="#">Previa</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link clpg" href="#">Próxima</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -272,16 +261,17 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
                                             $consulta = "SELECT * FROM normas";
                                             $resultado = $conexion->query($consulta);
                                             while($fila=$resultado->fetch_assoc()){
-                                                echo "<li class='nav-item'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'> "  . $fila['documento']."</li>";
+                                                echo "<li class='nav-item'><a href='#' class='alist'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'/> "  . $fila['documento']."</a></li>";
                                             }
                                                                 
                                         ?> 
                                         </ul>
+                                    </ul>
                                 </nav>
                                 
                         </div>
                         <input type='hidden' name='cliente' value="<?php echo $cliente ?>">
-        <input type="submit" name="asignarNorma" value="Asignar Norma">
+        <input type="submit" name="asignarNorma" class="btn btn-send btn-col1 m-1" value="Asignar Norma">
  </div>
 </div>
 </div>
@@ -313,11 +303,6 @@ function myFunction() {
     <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script>
-        function limpiarFormulario() {
-            document.getElementById("resetear").reset();
-        };
-    </script>
 </body>
 </html>
 

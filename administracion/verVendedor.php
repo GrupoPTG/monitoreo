@@ -30,44 +30,24 @@ include("menu.php");
     <div class="menu ">
         <div class="menu-down">
             <ul class="nav nav-tabs container">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+            <li class="nav-item">
+                    <a class="nav-link" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link active" href="vendedores.php">VENDEDORES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="sub-menu">
-        <div class="mrg">
-            <ul class="nav container">
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="crearVendedor.php    ">VENDEDOR</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > EDITAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item" href="editUser.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedores.php">VENDEDOR</a>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
+    
 
 
   <section class="user-create container">
