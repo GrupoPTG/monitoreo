@@ -29,20 +29,20 @@ include("menu.php");
 
     <div class="menu ">
         <div class="menu-down">
-            <ul class="nav nav-tabs container">
+        <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="crearUsuario.php">USUARIOS</a>
+                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>
@@ -51,7 +51,7 @@ include("menu.php");
 
 
         <section class="vendedor container">
-            <h1 class="user-text text-center">LISTA DE VENDEDORES</h1>
+            <h1 class="user-text text-center">LISTA DE CONTRATOS</h1>
 
 
             <div class="row my-5">
@@ -84,10 +84,25 @@ include("menu.php");
     echo "<br><br>";
 }
 
+if(isset($_POST['usersID'])){
+
+    $usuario = $_POST['usersID'];
+
+    for($i=0; $i<sizeof($usuario); ++$i){
+
+        $userToDelete = $usuario[$i];
+        $consulta = "DELETE FROM usuarios WHERE id='$userToDelete' ";
+        $hacerconsulta = $conexion->query($consulta);
+    }
+
+    echo "Usuarios eliminados";
+}
+
  $consulta = "SELECT * FROM usuarios";
 
  ?>
                    <div style="margin:0 auto; font-size: 13px;" >
+                   <form method='post' action='#' name='myForm'>
                   <?php
 
         $hacerconsulta = $conexion->query($consulta);
@@ -188,7 +203,11 @@ include("menu.php");
 
 
 
-
+<script>
+function myFunction() {
+    document.myForm.submit() 
+}
+</script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>

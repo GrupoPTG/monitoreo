@@ -76,7 +76,7 @@ include("menu.php");
 
 
       <section class="vendedor container">
-        <h1 class="user-text text-center">LISTA DE CIENTES</h1>
+        <h1 class="user-text text-center">LISTA DE CLIENTES</h1>
 
 
         <div class="row my-5">

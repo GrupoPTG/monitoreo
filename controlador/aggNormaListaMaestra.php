@@ -33,7 +33,7 @@ if(isset($_POST['asignarNorma'])){
           $e= $fila['e'];
           $strz=$fila['strz'];
           $crgo=$fila['crgo'];
-          $add=$fila['add'];
+          $add=$fila['adds'];
           $tc=$fila['tc'];
           $amd=$fila['amd'];
           $erta=$fila['erta'];
@@ -51,7 +51,6 @@ if(isset($_POST['asignarNorma'])){
         '$listaNormas',
         '$cliente',
         '$sdo',
-        '$titulo',
         '$revisionCliente',
         '$revisionActual',
         '$estatus',

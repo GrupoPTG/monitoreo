@@ -29,20 +29,20 @@ include("menu.php");
 
     <div class="menu ">
         <div class="menu-down">
-            <ul class="nav nav-tabs container">
+        <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="crearUsuario.php">USUARIOS</a>
+                    <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>
@@ -90,9 +90,36 @@ require_once("../modelo/connect.php");
 
  $cliente = $_POST['cliente'];
 
+
+
+
+
+ if(isset($_POST['usersID'])){
+
+    $usuario = $_POST['usersID'];
+
+    for($i=0; $i<sizeof($usuario); ++$i){
+
+        $userToDelete = $usuario[$i];
+ 
+        $consulta = "DELETE FROM normacliente WHERE id='$userToDelete' ";
+        $hacerconsulta = $conexion->query($consulta);
+        
+    }
+
+    echo "Usuarios eliminados";
+}
+
+
+
+
+
+
+
 $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
    $resultado = $conexion->query($sql);
    $fila=$resultado->fetch_assoc();
+   
 ?>
 
    <div class="row mt-5">
@@ -110,17 +137,22 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
                 </button>
                 </span>
             </div>
-            <div style="float: right;"><p>TOTAL DE NORMAS: 3</p></div>
+            
         </div>
     </div>
 <?php
    $consulta = "SELECT * FROM normacliente WHERE cliente='$cliente'";
+   $hacerconsulta = $conexion->query($consulta);
+   $row_cnt = $hacerconsulta->num_rows;
 
    ?>
+   <div style="float: right;"><p>TOTAL DE NORMAS: <?php echo $row_cnt ?></p></div>
 			 		<div style="font-size: 13px;" >
+                     <form method='post' action='#' name='myForm'>
+                     <input type="hidden" value="<?php echo $cliente ?>" name="cliente">
 					<?php
 
-          $hacerconsulta = $conexion->query($consulta);
+          
 							 
 			
                             echo "<table class='table table-bordered' id='datos'>";
@@ -183,6 +215,30 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 								</div>
 							<?php
 ?>
+
+
+
+
+
+  <div class="col-md-12 p-0">
+                <div class="row">
+                    <div class="col-md-6 p-0">
+                        <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
+                    </div>
+                    <div class="col-md-6 p-0 d-flex justify-content-end">
+                        <nav aria-label="Page navigation ">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link clpg" href="#">Previa</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link clpg" href="#">Próxima</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
 
 
 <form method="post" action="#">
@@ -248,7 +304,11 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 
 
 
-
+<script>
+function myFunction() {
+    document.myForm.submit() 
+}
+</script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/custom.js"></script>
     <script src="../js/popper.min.js"></script>

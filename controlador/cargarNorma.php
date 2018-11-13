@@ -9,7 +9,9 @@ if(isset($_POST['cargarNorma'])){
     $titulo=$_POST['titulo'];
     $idioma=$_POST['idioma'];
     $formato=$_POST['formato'];
-    $revision=$_POST['revision'];
+    $revisionFecha=$_POST['revision'];
+    $revisionSelect=$_POST['revisionSelect'];
+    $sustituida=$_POST['sustituida'];
     $estatus=$_POST['estatus'];
     $observaciones=$_POST['observaciones'];
     $r = $_POST['r'];
@@ -22,7 +24,12 @@ if(isset($_POST['cargarNorma'])){
     $erta=$_POST['erta'];
 
 
-
+if($revisionFecha==""){
+    $revision = $revisionSelect;
+}else{
+    $revision = $revisionFecha;
+    $sustituida = "";
+}
 
 
     $cargarNorma = "INSERT INTO normas VALUES (
@@ -33,7 +40,7 @@ if(isset($_POST['cargarNorma'])){
       '$idioma',
       '$formato',
       '$revision',
-      '',
+      '$sustituida',
       '$estatus',
       '$observaciones',
       '$r',

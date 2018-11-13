@@ -19,6 +19,7 @@
 
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
 </head>
 <body>
 
@@ -220,6 +221,15 @@ include("menu.php");
                 </div>
                                 -->
                 
+        </div>
+
+        <div class="col-md-12">
+        <div class="row m-5">
+            <div class="col-md-12 txt-center ">
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="createVendedor">CREAR</button>
+                <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
+            </div>
+        </div>
         </div>
         </form>
     </section>

@@ -31,7 +31,7 @@ if($cliente=="Seleccionar.."){
           $sdo= $fila['sdo'];
           $codigo= $fila['documento'];
           $titulo= $fila['titulo'];
-          $revisionCliente= "";
+          $sustituida= $fila['sustituida'];
           $revisionActual= $fila['revisionActual'];
           $estatus= $fila['estatus'];
           $observaciones= $fila['observaciones'];
@@ -39,7 +39,7 @@ if($cliente=="Seleccionar.."){
           $e= $fila['e'];
           $strz=$fila['strz'];
           $crgo=$fila['crgo'];
-          $add=$fila['add'];
+          $add=$fila['adds'];
           $tc=$fila['tc'];
           $amd=$fila['amd'];
           $erta=$fila['erta'];
@@ -57,8 +57,7 @@ if($cliente=="Seleccionar.."){
               '$listaNormas',
               '$idCliente',
               '$sdo',
-              '$titulo',
-              '$revisionCliente',
+              '$sustituida',
               '$revisionActual',
               '$estatus',
               '$observaciones',

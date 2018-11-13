@@ -51,3 +51,12 @@ function agregarContacto() {
     //aggInput.appendChild(checklist);
     aggInput.appendChild(mybr);
 }
+
+
+
+
+function cerrarVentana(){
+    var ventana= document.getElementById("exampleModal");
+
+    ventana.setAttribute("style", "display: hidden;");
+}

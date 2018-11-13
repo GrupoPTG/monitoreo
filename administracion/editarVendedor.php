@@ -86,7 +86,7 @@ echo "EL USUARIO FUE ACTUALIZADO CON EXITO <br><br>";
    $emailCliente=$_POST['correo'];
    $pass= $_POST['pass'];
    $telefono=$_POST['telefono'];
-   $pais=$_POST['pais'];
+   //$pais=$_POST['pais'];
 
 
 
@@ -105,8 +105,7 @@ echo "EL USUARIO FUE ACTUALIZADO CON EXITO <br><br>";
    nombre='$nombreVendedor',
    correo='$emailCliente',
    pass='$pass',
-   telefono='$telefono',
-   territorio='$pais'
+   telefono='$telefono'
    WHERE id=$idUsuario";
  
  require_once("../modelo/connect.php");

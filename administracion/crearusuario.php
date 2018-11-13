@@ -34,15 +34,15 @@ include("menu.php");
                     <a class="nav-link active" href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">CLIENTES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="normas.php">NORMAS</a>
                 </li>
             </ul>
         </div>
