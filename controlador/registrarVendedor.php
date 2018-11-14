@@ -45,7 +45,7 @@ require ("../modelo/connect.php");
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
           <div class="modal-content">
             <div class="modal-body">
-              El Vendedor fue registrado con exito
+              El Usuario fue registrado con exito
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
@@ -55,13 +55,14 @@ require ("../modelo/connect.php");
         </div>
       </div>
     <?php
+
   }else{
     ?>
     <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
           <div class="modal-content">
             <div class="modal-body">
-            El Vendedor no fue registrado por favor consulte con el administrador
+            El Usuario no fue registrado por favor consulte con el administrador
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>

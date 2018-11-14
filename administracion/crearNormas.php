@@ -30,40 +30,26 @@ include("menu.php");
     <div class="menu ">
         <div class="menu-down">
             <ul class="nav nav-tabs container">
+            <ul class="nav nav-tabs container">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">USUARIOS</a>
+                    <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="cliente.html">CLIENTES</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VENDEDORES</a>
+                    <a class="nav-link " href="contratos.php">CLIENTES</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">NORMAS</a>
+                    <a class="nav-link" href="vendedores.php">VENDEDORES</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="normas.php">NORMAS</a>
+                </li>
+            </ul>
             </ul>
         </div>
     </div>
-    <div class="sub-menu">
-        <div class="mrg">
-            <ul class="nav container">
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" > CREAR USUARIO </a>
-                    <div class="dropdown-menu dropdown-menu-left">
-                        <a class="dropdown-item"  href="crearusuario.php">CLIENTE</a>
-                        <a class="dropdown-item" href="vendedor.html">VENDEDOR</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="edituser.html">EDITAR USUARIO</a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
+    
 
 
   <section class="user-create container">
@@ -74,14 +60,11 @@ include("menu.php");
 
 
 
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script>
-        function limpiarFormulario() {
-            document.getElementById("resetear").reset();
-        };
-    </script>
+
+<?php
+include("js.php");
+?>
+
 </body>
 </html>
 

@@ -42,38 +42,37 @@
     
     //Consulta Actualizar Usuario
     if($conexion->query($actualizarUsuario)!==False){
-        ?>
-    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-          <div class="modal-content">
-            <div class="modal-body">
-            El usuario fue actualizado con exito
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
-
-    }else{
-        ?>
-        <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-            <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-              <div class="modal-content">
-                <div class="modal-body">
-                El Usuario no fue actualizado por favor consulte con el administrador
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-                  <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
+      ?>
+      <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+          <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+            <div class="modal-content">
+              <div class="modal-body">
+              El usuario fue actualizado con exito
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
               </div>
             </div>
           </div>
-        <?php
+        </div>
+      <?php
+    }else{
+      ?>
+      <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
+          <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+            <div class="modal-content">
+              <div class="modal-body">
+              El Usuario no fue actualizado por favor consulte con el administrador
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php
     }  
   
     

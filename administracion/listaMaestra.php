@@ -29,7 +29,7 @@ include("menu.php");
 
     <div class="menu ">
         <div class="menu-down">
-        <ul class="nav nav-tabs container">
+            <ul class="nav nav-tabs container">
                 <li class="nav-item">
                     <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
@@ -47,26 +47,6 @@ include("menu.php");
             </ul>
         </div>
     </div>
-    <div class="sub-menu">
-        <div class="mrg">
-            <ul class="nav container">
-                <li class="nav-item">
-                    <a class="nav-link " href="#">INFORMACIÓN GENERAL</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">LISTA MAESTRA</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">REPORTES</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-
-
-
 
 <?php
 if(isset($_POST['asignarNorma'])){
@@ -81,51 +61,31 @@ if(isset($_POST['asignarNorma'])){
 
 
 
-  <section class="user-create container">
+
+  <section class="user-create container my-5">
     <h1 class="user-text text-center">LISTA MAESTRA</h1>
+    
 <?php
 
 
 require_once("../modelo/connect.php");
 
- $cliente = $_POST['cliente'];
-
-
-
-
-
- if(isset($_POST['usersID'])){
-
-    $usuario = $_POST['usersID'];
-
-    for($i=0; $i<sizeof($usuario); ++$i){
-
-        $userToDelete = $usuario[$i];
- 
-        $consulta = "DELETE FROM normacliente WHERE id='$userToDelete' ";
-        $hacerconsulta = $conexion->query($consulta);
-        
-    }
-
-    echo "Usuarios eliminados";
-}
-
-
-
-
-
+  $cliente = $_POST['cliente'];
 
 
 $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
    $resultado = $conexion->query($sql);
    $fila=$resultado->fetch_assoc();
-   
-?>
+   $consulta = "SELECT Norcli.norma, Norcli.cliente, Norcli.revisionCliente, Norcli.estatusCliente,Norcli.observaciones,
+   Nor.documento, Nor.revisionActual, Nor.sdo, Nor.titulo, Nor.estatus
+FROM normacliente Norcli
+INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
 
-   <div class="row mt-5">
+   ?>
+   <div class="row my-5">
         <div class="col-md-6">
             <?php
-   echo "<h5>".$nombreCliente= $fila['cliente']."</h5>";
+   echo "<h3>".$nombreCliente= $fila['cliente']."</h3>";
             ?>
         </div>
         <div class="col-md-6">
@@ -140,69 +100,63 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
             
         </div>
     </div>
-<?php
-   $consulta = "SELECT * FROM normacliente WHERE cliente='$cliente'";
-   $hacerconsulta = $conexion->query($consulta);
-   $row_cnt = $hacerconsulta->num_rows;
-
-   ?>
-   <div style="float: right;"><p>TOTAL DE NORMAS: <?php echo $row_cnt ?></p></div>
-			 		<div style="font-size: 13px;" >
-                     <form method='post' action='#' name='myForm'>
-                     <input type="hidden" value="<?php echo $cliente ?>" name="cliente">
+			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
 					<?php
 
-          
+          $hacerconsulta = $conexion->query($consulta);
 							 
-			
-                            echo "<table class='table table-bordered' id='datos'>";
-                            echo "<thead class='bck-thead txt-center'>";
-                            echo "<tr>";
-                            echo "<th><input type='checkbox'  class='check' id='checkAll'></th>";
-                            echo "<th > SDO/ORG</font></th>";
-							echo "<th > DOCUMENTO</th>";
-							echo "<th > TITULO</th>";
-							echo "<th > REVISIÓN CLIENTE</th>";
-                            echo "<th > REVISIÓN ACTUAL</th>";
-                            echo "<th > ESTATUS NORMA</th>";
-                            echo "<th > ESTATUS DEL CLIENTE</th>";
-                            echo "<th > OBSERVACIONES</th>";
-                            echo "</tr>";
-                            echo "</thead>";
-                            echo "<tbody>";
-                            echo "<tr>";
-                            echo "</tr>";	
-							
+            echo "<table class='table table-bordered' id='datos'>";
+            echo "<thead class='bck-thead txt-center'>";
+            echo "<tr>";
+            echo "<th><input type='checkbox'  class='check' id='checkAll'></th>";
+            echo "<th > SDO/ORG</font></th>";
+            echo "<th > CODIGO</th>";
+            echo "<th > REVISIÓN CLIENTE</th>";
+            echo "<th > REVISIÓN ACTUAL</th>";
+            echo "<th > TITULO DE NORMA </th>";
+            echo "<th > ESTATUS NORMA </th>";
+            echo "<th > ESTATUS DEL CLIENTE</th>";
+            echo "<th > OBSERVACIONES</th>";
+            echo "<th > OPCIONES </th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+					
 							
               //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
               $reg=$hacerconsulta->fetch_array();
 							
 							while ($reg)
 							{
-							echo "<tr>";
+                            echo "<tr>";
                             echo "<td align='center' ><input type='checkbox' class='check' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'></td>";
-                            echo "<td align='center' >".$reg[3]."</td>";
-							echo "<td align='center' >".$reg[1]."</td>";
-							echo "<td align='center' >".$reg[4]."</td>";
-							echo "<td align='center' >".$reg[5]."</td>";
-                            echo "<td align='center' >".$reg[6]."</td>";
-                            echo "<td align='center' >".$reg[7]."</td>";
-                            echo "<td align='center' >EstatusCliente</td>";
-							echo "<td align='center' >".$reg[8]."</td>";
+                            echo "<td align='center' >".$reg['sdo']."</td>";
+							echo "<td align='center' >".$reg['norma']."</td>";
+							echo "<td align='center' >".$reg['revisionCliente']."</td>";
+							echo "<td align='center' >".$reg['revisionActual']."</td>";
+                            echo "<td align='center' >".$reg['titulo']."</td>";
+                            echo "<td align='center' >".$reg['estatus']."</td>";
+                            echo "<td align='center' >".$reg['estatusCliente']."</td>";
+							echo "<td align='center' >".$reg['observaciones']."</td>";
 							
 
+                      
 
-							echo "<td  align='center''>				
-								<form action='verNorma.php' method='post'>			
-									<input type='hidden' name='norma' value=".$reg[1].">
-									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px' />
-								</form>				
-							</td>";//FIN DEL echo
+							echo "<td  align='center'>				
+                                <form action='editarNormas.php' method='post' style='display:inline-block'>
+                                    <input type='hidden' name='cliente' value=".$cliente.">		
+									<input type='hidden' name='norma' value=".$reg['norma'].">
+									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px'  />
+                                </form>	
 
-							
-					
-
-
+                                <form action='editarNormaClienteNorma.php' method='post' class='mx-2' style='display:inline-block'>
+                                    <input type='hidden' name='cliente' value=".$cliente.">		
+									<input type='hidden' name='norma' value=".$reg['norma'].">
+									<input type='image' name='imageField' src='../assets/img/edit-draw-pencil.png' width='20px' />
+                                </form>	
+                                
+                            </td>";//FIN DEL echo
+                            
               //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
               $reg=$hacerconsulta->fetch_array();
 							echo "</tr>";
@@ -219,25 +173,15 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 
 
 
-  <div class="col-md-12 p-0">
-                <div class="row">
-                    <div class="col-md-6 p-0">
-                        <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
-                    </div>
-                    
-                </div>
-
-            </div>
 
 
-<form method="post" action="#">
 
- <div class="col-md-6">
+<div class="col-md-6">
                 <div class="box-vend">
                     <div class="menu-down p-4">
                         <ul class="nav nav-tabs container">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Clientes</a>
+                                <a class="nav-link active" href="#">Norma</a>
                             </li>
                         </ul>
 
@@ -252,6 +196,8 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 
                         <div class="box-search">
                             <nav>
+                            <form method="post" action="#">
+
                                 <ul class="nav flex-column m-3">
                                     <li class="nav-item my-3"><input type="checkbox" class="check" id="checkAll"> Seleccionar todos</li>
                                         
@@ -261,24 +207,20 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
                                             $consulta = "SELECT * FROM normas";
                                             $resultado = $conexion->query($consulta);
                                             while($fila=$resultado->fetch_assoc()){
-                                                echo "<li class='nav-item'><a href='#' class='alist'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'/> "  . $fila['documento']."</a></li>";
+                                                echo "<li class='nav-item'><a class='alist'> <input type='checkbox' class='check' name='documento[]' value='". $fila['documento']."'/>". $fila['documento']."</a></li>";
                                             }
                                                                 
                                         ?> 
                                         </ul>
-                                    </ul>
-                                </nav>
+                                </ul>
+                            </nav>
                                 
                         </div>
                         <input type='hidden' name='cliente' value="<?php echo $cliente ?>">
         <input type="submit" name="asignarNorma" class="btn btn-send btn-col1 m-1" value="Asignar Norma">
+        </form>
  </div>
-</div>
-</div>
 
-
-
-</form>
 
 
 
@@ -293,16 +235,10 @@ $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
 
 
 
+<?php
+include("js.php");
+?>
 
-<script>
-function myFunction() {
-    document.myForm.submit() 
-}
-</script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
 </body>
 </html>
 

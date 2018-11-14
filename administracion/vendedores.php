@@ -137,8 +137,8 @@ if(isset($_POST['usersID'])){
                           </td>";
                           echo "<td align='center' >".$reg[0]."</td>";
                           echo "<td align='center' >".$reg[1]."</td>";
-                          echo "<td align='center' >".$reg[2]."</td>";
                           echo "<td align='center' >".$reg[3]."</td>";
+                          echo "<td align='center' >".$reg[2]."</td>";
                           echo "<td align='center' >".$reg[5]."</td>";
 
                           
@@ -195,10 +195,10 @@ function myFunction() {
     document.myForm.submit() 
 }
 </script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
+
+<?php
+include("js.php");
+?>
 </body>
 </html>
 

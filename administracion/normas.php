@@ -233,14 +233,9 @@ if(isset($_POST['asignarNorma'])){
 
 
 
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script>
-        function limpiarFormulario() {
-            document.getElementById("resetear").reset();
-        };
-    </script>
+<?php
+include("js.php");
+?>
 </body>
 </html>
 

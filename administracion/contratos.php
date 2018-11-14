@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/tcal.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
     <script src="../js/script.js"></script>
     <script type="text/javascript" src="../js/tcal.js"></script>
 </head>
@@ -29,7 +29,7 @@ include("menu.php");
 
     <div class="menu ">
         <div class="menu-down">
-        <ul class="nav nav-tabs container">
+            <ul class="nav nav-tabs container">
                 <li class="nav-item">
                     <a class="nav-link " href="crearusuario.php">USUARIOS</a>
                 </li>
@@ -47,10 +47,10 @@ include("menu.php");
             </ul>
         </div>
     </div>
+    
 
 
-
-        <section class="vendedor container my-5">
+  <section class="vendedor container my-5">
             <h1 class="user-text text-center">LISTA DE CONTRATOS</h1>
 
 
@@ -69,7 +69,6 @@ include("menu.php");
                     </div>
                 </div>
             </div>
-        
   <?php
  require_once("../modelo/connect.php");
 
@@ -84,49 +83,33 @@ include("menu.php");
     echo "<br><br>";
 }
 
-if(isset($_POST['usersID'])){
-
-    $usuario = $_POST['usersID'];
-
-    for($i=0; $i<sizeof($usuario); ++$i){
-
-        $userToDelete = $usuario[$i];
-        $consulta = "DELETE FROM usuarios WHERE id='$userToDelete' ";
-        $hacerconsulta = $conexion->query($consulta);
-    }
-
-    echo "Usuarios eliminados";
-}
-
  $consulta = "SELECT * FROM usuarios";
 
  ?>
-                   <div style="margin:0 auto; font-size: 13px;" >
-                   <form method='post' action='#' name='myForm'>
+                   <div style="font-size: 12px;" >
                   <?php
 
         $hacerconsulta = $conexion->query($consulta);
                            
-                echo "<table class='table table-bordered' id='datos'>";
-                echo "<thead class='bck-thead txt-center'>";
-                echo "<tr>";
-                echo "<th><input type='checkbox' class='check' id='checkAll'></th>";
-                echo "<th> ID </th>";
-                echo "<th>CLIENTE</th>";
-                echo "<th>CORREO ELECTRÓNICO </th>";
-                echo "<th> PAIS</th>";
-                echo "<th>INICIO DE CONTRATO</th>";
-                echo "<th>FIN DE CONTRATO</th>";
-                echo "<th> N° CONTRATO </th>";
-                echo "<th> ESTATUS </th>";
-                echo "<th> OPCIONES </th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                echo "<tr>";
-                echo "</tr>";		
-                          
-                          
+                        echo "<table class='table table-bordered' id='datos'>";
+                        echo "<thead class='bck-thead txt-center'>";
+                        echo "<tr>";
+                        echo "<th><input type='checkbox' class='check' id='checkAll'></th>";
+                        echo "<th> ID </th>";
+                        echo "<th>CLIENTE</th>";
+                        echo "<th>CORREO ELECTRÓNICO </th>";
+                        echo "<th> PAIS</th>";
+                        echo "<th>INICIO DE CONTRATO</th>";
+                        echo "<th>FIN DE CONTRATO</th>";
+                        echo "<th> N° CONTRATO </th>";
+                        echo "<th> ESTATUS </th>";
+                        echo "<th> OPCIONES </th>";
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody  style='font-size: 15px;'>";
+                        echo "<tr>";
+                        echo "</tr>";	
+                        
             //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
             $reg=$hacerconsulta->fetch_array();
                           
@@ -146,22 +129,22 @@ if(isset($_POST['usersID'])){
                             echo "<td align='center' >".$reg[11]."</td>";
                             echo "<td align='center' >".$reg[10]."</td>";
 
-                          
-                          echo "
+                            echo "
                           <td  align='center'>				
-								<form action='verUsuario.php' method='post'>			
+								<form action='verUsuario.php' method='post' style='display: inline-block;'>			
                                     <input type='hidden' name='idUser' value=".$reg[0].">
                                     <input type='hidden' name='delete'>
-									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px'/>
+									<input type='image' style='padding: 2px' name='imageField' src='../assets/img/magnifier.png' width='20px'/>
                                 </form>                                								
-                              <form action='listaMaestra.php' method='post'>			
-                                  <input type='hidden' name='cliente' value=".$reg[0].">                                  
-                                  <input type='submit' class='btn m-1' name='imageField' value='Lista Maestra'/>
-                              </form>				
-                          </td>
-                          
-    
-                          ";//FIN DEL echo
+                                <form action='listaMaestra.php' method='post'style='display: inline-block;'>			
+                                    <input type='hidden' name='cliente' value=".$reg[0].">                                  
+                                    <input type='submit' style='padding: 2px' class='btn m-1' name='imageField' value='Lista Maestra'/>
+                                </form>			
+                                <form action='reportes.php' method='post' style='display: inline-block;'>			
+                                    <input type='hidden' name='cliente' value=".$reg[0].">                                  
+                                    <input type='submit' style='padding: 2px' class='btn m-1' name='imageField' value='Reportes'/>
+                                </form>		
+                          </td>";//FIN DEL echo
 
                           
                   
@@ -176,32 +159,25 @@ if(isset($_POST['usersID'])){
 
                           ?>
                               </div>
-                          <?php
- ?>
-
- 
- <div class="col-md-12 p-0">
+                              <div class="col-md-12 p-0">
                 <div class="row">
                     <div class="col-md-6 p-0">
                         <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
                     </div>
                     
                 </div>
+
             </div>
   </section>
 
 
 
 
-<script>
-function myFunction() {
-    document.myForm.submit() 
-}
-</script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
+
+
+<?php
+include("js.php");
+?>
 </body>
 </html>
 
