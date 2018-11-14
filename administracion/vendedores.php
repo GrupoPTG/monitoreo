@@ -115,7 +115,7 @@ if(isset($_POST['usersID'])){
                         echo "<th> ID </th>";
                         echo "<th>VENDEDOR</th>";
                         echo "<th>CORREO ELECTRÓNICO </th>";
-                        echo "<th> DIRECCIÓN</th>";
+                        echo "<th> TELEFONO</th>";
                         echo "<th>PAIS</th>";
                         echo "<th> OPCIONES </th>";
                         echo "</tr>";

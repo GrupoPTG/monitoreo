@@ -69,6 +69,7 @@ include("menu.php");
                     </div>
                 </div>
             </div>
+            
   <?php
  require_once("../modelo/connect.php");
 
