@@ -188,6 +188,7 @@ include("menu.php");
 
             </div>
             
+            
             <button type="button" id="btnAdd" class="btn btn-light btn-circle" onclick="agregarContacto()"><i class="fas fa-plus"></i></button>
            <!--Campos contactos-->
             <div id="formularioCliente" class="col-md-12 row"></div>  

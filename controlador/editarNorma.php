@@ -100,37 +100,9 @@ if(isset($_POST['editarNormas'])){
     
             //Consulta Actualizar Usuario
             if($conexion->query($actualizarNorma)!==False){
-                ?>
-    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-          <div class="modal-content">
-            <div class="modal-body">
-            La norma fue actualizada con exito
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
+                echo "La norma fue actualizada con exito";
             }else{
-                ?>
-    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-          <div class="modal-content">
-            <div class="modal-body">
-            La norma no fue actualizado por favor consulte con el administrador
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
+                echo "La norma no fue actualizado por favor consulte con el administrador";
             }  
 
 
@@ -156,39 +128,9 @@ if(isset($_POST['editarNormas'])){
     
             //Consulta Actualizar Usuario
             if($conexion->query($actualizarNormaGral)!==False){
-                e{
-                    ?>
-        <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-            <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-              <div class="modal-content">
-                <div class="modal-body">
-                La norma fue actualizada con exito
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-                  <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php
+                echo "La norma fue actualizada con exito";
             }else{
-                e{
-                    ?>
-        <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-            <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-              <div class="modal-content">
-                <div class="modal-body">
-                La norma no fue actualizado por favor consulte con el administrador
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-                  <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php
+                echo "La norma no fue actualizado por favor consulte con el administrador";
             }  
 
 }
@@ -197,15 +139,17 @@ if(isset($_POST['editarNormas'])){
 
 
 
-/* 
+////////////REGISTRO REPORTE DE NORMAS
+
+$fecha=date("y-m-d");
+
+
             $registroActNorma = "INSERT INTO normas_actualizadas VALUES (
                 '',
+                '$cliente',
                 '$documento',
                 '$titulo',
-                '$revisionActual',
-                '$ultimaRevision',
-                '$estatus',
-                '$observaciones'
+                '$fecha'
                 )";       
   
 
@@ -215,5 +159,5 @@ if(isset($_POST['editarNormas'])){
 }else{
     echo "El reporte de normas no fue actualizado por favor consulte con el administrador";
 } 
-*/
+
 ?>

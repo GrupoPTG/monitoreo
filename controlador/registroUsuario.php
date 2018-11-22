@@ -81,21 +81,7 @@ if(isset($_POST['registrarCliente'])){
         </div>
       <?php
   
-      ?>
-      <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; width:100%;" >
-          <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-            <div class="modal-content">
-              <div class="modal-body">
-              El Usuario no fue registrado por favor consulte con el administrador
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php
+    
     }
     
 
@@ -127,7 +113,8 @@ if(isset($_POST['registrarCliente'])){
         '$contactName',
         '$contactEmail',
         '$contactTelef',
-        '$contactCargo'
+        '$contactCargo',
+        'secundario'
         )";
   
       $regitrarContacto = $conexion->query($registrarContacto);
@@ -143,24 +130,27 @@ if(isset($_POST['registrarCliente'])){
     
 
 
+if($vendedor!="Seleccionar Vendedor"){
+  $sql = "SELECT * FROM vendedor WHERE nombre='$vendedor'";
+  $resultado = $conexion->query($sql);
+  $fila=$resultado->fetch_assoc();
+  $id= $fila['id'];
 
 
-    $sql = "SELECT * FROM vendedor WHERE nombre='$vendedor'";
-    $resultado = $conexion->query($sql);
-    $fila=$resultado->fetch_assoc();
-    $id= $fila['id'];
 
+  $aggVendedor = "INSERT INTO vendedorcliente VALUES (
+      '',
+      '$id',
+      '$nombreCliente',
+      '$usuarioId',
+      '$emailCliente',
+      '$pais'
+      )";
 
+    $aggVendedor = $conexion->query($aggVendedor);
+}
 
-    $aggVendedor = "INSERT INTO vendedorcliente VALUES (
-        '',
-        '$id',
-        '$nombreCliente',
-        '',
-        ''
-        )";
-  
-      $aggVendedor = $conexion->query($aggVendedor);
+   
     
     
     

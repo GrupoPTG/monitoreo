@@ -76,10 +76,9 @@ require_once("../modelo/connect.php");
 $sql = "SELECT * FROM usuarios WHERE id='$cliente'";
    $resultado = $conexion->query($sql);
    $fila=$resultado->fetch_assoc();
-   $consulta = "SELECT Norcli.norma, Norcli.cliente, Norcli.revisionCliente, Norcli.estatusCliente,Norcli.observaciones,
-   Nor.documento, Nor.revisionActual, Nor.sdo, Nor.titulo, Nor.estatus
-FROM normacliente Norcli
-INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
+
+
+  
 
    ?>
    <div class="row my-5">
@@ -103,6 +102,11 @@ INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
 			 		<div style="width: 90%; margin:0 auto; font-size: 13px;" >
 					<?php
 
+        $consulta = "SELECT Norcli.norma, Norcli.cliente, Norcli.revisionCliente, Norcli.estatusCliente,Norcli.observaciones,
+        Nor.documento, Nor.revisionActual, Nor.sdo, Nor.titulo, Nor.estatus
+        FROM normacliente Norcli
+        INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
+
           $hacerconsulta = $conexion->query($consulta);
 							 
             echo "<table class='table table-bordered' id='datos'>";
@@ -123,7 +127,7 @@ INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
             echo "<tbody>";
 					
 							
-              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);
+              //$reg = mysql_fetch_array($hacerconsulta,MYSQL_BOTH);  <form action='editarNormaClienteNorma.php' method='post' class='mx-2' style='display:inline-block'>
               $reg=$hacerconsulta->fetch_array();
 							
 							while ($reg)
@@ -146,14 +150,10 @@ INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente'";
                                 <form action='editarNormas.php' method='post' style='display:inline-block'>
                                     <input type='hidden' name='cliente' value=".$cliente.">		
 									<input type='hidden' name='norma' value=".$reg['norma'].">
-									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px'  />
+									<input type='image' name='imageField' src='../assets/img/edit-draw-pencil.png' width='20px'  />
                                 </form>	
-
-                                <form action='editarNormaClienteNorma.php' method='post' class='mx-2' style='display:inline-block'>
-                                    <input type='hidden' name='cliente' value=".$cliente.">		
-									<input type='hidden' name='norma' value=".$reg['norma'].">
-									<input type='image' name='imageField' src='../assets/img/edit-draw-pencil.png' width='20px' />
-                                </form>	
+                                
+                               
                                 
                             </td>";//FIN DEL echo
                             

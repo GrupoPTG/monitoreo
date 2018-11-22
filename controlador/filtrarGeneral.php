@@ -77,11 +77,6 @@ INNER JOIN normas Nor ON Norcli.norma=Nor.documento WHERE cliente='$cliente' AND
 									<input type='hidden' name='norma' value=".$reg['norma'].">
 									<input type='image' name='imageField' src='../assets/img/magnifier.png' width='20px' />
 								</form>	
-								<form action='editarNormaClienteNorma.php'  class='mx-2' method='post' style='display: inline-block;'>
-									<input type='hidden' name='cliente' value=".$cliente.">		
-									<input type='hidden' name='norma' value=".$reg['norma'].">
-									<input type='image' name='imageField' src='../assets/img/edit-draw-pencil.png' width='20px' />
-								</form>	
                             </td>";//FIN DEL echo
                       
                            

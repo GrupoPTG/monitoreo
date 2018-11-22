@@ -2,8 +2,9 @@
 
  if(isset($_POST['editarCliente'])){
 
+  require_once("../modelo/connect.php");
 
-    echo $idUsuario= $_POST['idUser']; 
+    $idUsuario= $_POST['idUser']; 
     $nombreCliente= $_POST['cliente'];
     $emailCliente=$_POST['correoElectronico'];
     $usuario= $_POST['usuarioCliente'];
@@ -77,6 +78,9 @@
   
     
 
+
+
+
     for($i=0; $i<sizeof($nombreContacto); ++$i){
 
         $contactName = $nombreContacto[$i];
@@ -84,7 +88,8 @@
         $contactTelef= $nombreTelefono[$i];
         $contactCargo= $nombreCargo[$i];
   
-        
+        if($contactName != "" && $contactEmail != "" && $contactTelef != "" && $contactCargo != "")
+    {
   
         $registrarContacto = "INSERT INTO contactos VALUES (
           '',
@@ -92,11 +97,13 @@
           '$contactName',
           '$contactEmail',
           '$contactTelef',
-          '$contactCargo'
+          '$contactCargo',
+          'secundario'
           )";
     
         $regitrarContacto = $conexion->query($registrarContacto);
       }
+      }//fin del for
     
   }
 ?>

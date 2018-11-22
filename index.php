@@ -36,10 +36,10 @@
         <div id="formularioLogin">
             <div style="text-align:center; font-family:verdana; padding-top:20px; color:white; font-size:20px;">MONITOREO DE NORMAS</div>
             <div style="text-align:center; font-family:verdana; padding-top:10px; color:white; font-size:14px;">USUARIOS</div>
-            <form method="post" action="#">
+            <form method="post" action="login.php">
                 <input type="text" name="user" placeholder="Usuario" required class="formLogin"><br>
                 <input type="password" name="pass" placeholder="Contraseña" required class="formLogin"><br>
-                <input type="submit" value="LOGIN" class="btn_singIn" name="btn_singIn">
+                <input type="submit" value="LOGIN" class="btn_singIn" name="ingresar">
             </form>
 
 

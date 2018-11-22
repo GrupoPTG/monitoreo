@@ -15,11 +15,11 @@ MODULO ADMINISTRACION
         <ul class="nav justify-content-end">
             <li class="nav-item dropdown mr-5">
                 <span><img src="../assets/img/user.png" alt=""></span>
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> ADMINISTRADOR </a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['login'] ?></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Link</a>
-                    <a class="dropdown-item" href="#">Link</a>
-                    <a class="dropdown-item" href="#">Link</a>
+                    <a class="dropdown-item" href="../destruir.php">Cerrar Session</a>
+                    <!--<a class="dropdown-item" href="#">Link</a>
+                    <a class="dropdown-item" href="#">Link</a>-->
                 </div>
             </li>
         </ul>

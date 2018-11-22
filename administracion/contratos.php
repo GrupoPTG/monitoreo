@@ -73,6 +73,7 @@ include("menu.php");
   <?php
  require_once("../modelo/connect.php");
 
+ /*
  if(isset($_POST['delete'])){
 
     $usuario = $_POST['idUser'];
@@ -83,6 +84,20 @@ include("menu.php");
     echo "Vendedor eliminado";
     echo "<br><br>";
 }
+*/
+
+function diferenciaDias($inicio, $fin)
+{
+    $inicio = strtotime($inicio);
+    $fin = strtotime($fin);
+    $dif = $fin - $inicio;
+    $diasFalt = (( ( $dif / 60 ) / 60 ) / 24);
+    return ceil($diasFalt);
+}
+$inicio = date("Y-m-d");
+
+
+
 
  $consulta = "SELECT * FROM usuarios";
 
@@ -95,7 +110,7 @@ include("menu.php");
                         echo "<table class='table table-bordered' id='datos'>";
                         echo "<thead class='bck-thead txt-center'>";
                         echo "<tr>";
-                        echo "<th><input type='checkbox' class='check' id='checkAll'></th>";
+                        echo "<th>Vence</th>";
                         echo "<th> ID </th>";
                         echo "<th>CLIENTE</th>";
                         echo "<th>CORREO ELECTRÓNICO </th>";
@@ -117,10 +132,7 @@ include("menu.php");
                           while ($reg)
                           {
                             echo "<tr>";
-                            echo "<td>                            
-                            <input type='checkbox' class='check' aria-label='Checkbox for following text input' name='usersID[]' value='".$reg[0]."'>
-                            </form>
-                            </td>";
+                            echo "<td>".diferenciaDias($inicio, $reg[9])." Dias</td>";
                             echo "<td align='center' >".$reg[0]."</td>";
                             echo "<td align='center' >".$reg[1]."</td>";
                             echo "<td align='center' >".$reg[2]."</td>";
@@ -161,10 +173,12 @@ include("menu.php");
                           ?>
                               </div>
                               <div class="col-md-12 p-0">
+                <!--
                 <div class="row">
                     <div class="col-md-6 p-0">
                         <a href="javascript:myFunction()" class="btn btn-trash p-1">ELIMINAR SELECCIÓN |  <img src="../assets/img/trash-can.png" class="wdt-form" alt=""></a>
                     </div>
+                -->
                     
                 </div>
 

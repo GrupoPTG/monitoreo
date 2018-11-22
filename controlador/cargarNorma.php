@@ -7,11 +7,11 @@ if(isset($_POST['cargarNorma'])){
     $sdo= $_POST['sdo'];
     $documento=$_POST['documento'];
     $titulo=$_POST['titulo'];
-    $idioma=$_POST['idioma'];
-    $formato=$_POST['formato'];
+    $idioma="";
+    $formato="";
     $revisionFecha=$_POST['revision'];
-    $revisionSelect=$_POST['revisionSelect'];
-    $sustituida=$_POST['sustituida'];
+    //$revisionSelect=$_POST['revisionSelect'];
+    //$sustituida=$_POST['sustituida'];
     $estatus=$_POST['estatus'];
     $observaciones=$_POST['observaciones'];
     $r = $_POST['r'];
@@ -93,5 +93,4 @@ require ("../modelo/connect.php");
 
   }// si existe cargar norma?
 
-?>
 ?>

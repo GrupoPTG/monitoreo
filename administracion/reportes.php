@@ -2,6 +2,7 @@
   session_start();
   if ($_SESSION['login'])
     {
+ $cliente=$_POST['cliente'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,10 +52,17 @@ include("menu.php");
         <div class="mrg">
             <ul class="nav container">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reporte Gerencial</a>
+                <form action='reportes.php' method='post'>
+                            <input type="hidden" value="<?php echo $cliente ?>" name="cliente">
+                            <input type="submit" value="Reporte Gerencial" style="background: white;border: 0;">
+                        </form>
+                        
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reporte de Auditoria</a>
+                <form method="post" action="reporteAuditoria.php">
+                            <input type="hidden" value="<?php echo $cliente?>" name="cliente">
+                            <input type="submit" value="Reporte de Auditoria" style="background: white;border: 0;">
+                        </form>
                 </li>
 
             </ul>

@@ -56,6 +56,10 @@ include("menu.php");
 
 
 
+<?php
+  require_once("../controlador/editarCliente.php");
+?>
+
 
 
 <?php
@@ -160,7 +164,7 @@ include("menu.php");
         </div>
 
         <div class="row my-5">
-            <h5>DATOS DE CONTACTOS</h5>
+            <h5>AGREGAR NUEVOS CONTACTOS</h5>
         </div>
         <div class="col-md-12 row">
             <div class="input-group wd-1 m-1">
@@ -171,14 +175,14 @@ include("menu.php");
             </div>
 
             <div class="input-group wd-1 m-1">
-                <input type="email"  class="form-control" placeholder="Correo Electrónico" name="nombreCorreo[]"  >
+                <input type="email"  class="form-control" placeholder="Correo Electronico" name="nombreCorreo[]"  >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
             </div>
 
             <div class="input-group wd-1 m-1 clonedInput">
-                <input type="number"  class="form-control" placeholder="Teléfono" name="nombreTelefono[]" >
+                <input type="number"  class="form-control" placeholder="Telefono" name="nombreTelefono[]" >
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"> </span>
                 </div>
@@ -260,12 +264,52 @@ include("menu.php");
         <div class="row m-5">
             <div class="col-md-12 txt-center ">
                 <input type="hidden" value="<?php echo $usuario?>" name="idUser">
-                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">EDITAR</button>
+                <button class="btn btn-send btn-col1 m-1" type="submit" name="editarCliente">GUARDAR CAMBIOS</button>
                 <button class="btn btn-send btn-col2 m-1" type="button" onclick="limpiarFormulario()">LIMPIAR</button>
             </div>
         </div>
 
     </form>
+
+
+
+
+
+<div class="row my-5">
+            <h5>MODIFICAR DATOS DE CONTACTOS</h5>
+        </div>
+<form method="post" action="editarContactos.php">
+<?php
+                    $consulta = "SELECT * FROM contactos WHERE cliente='$usuario'";
+
+                    $resultado = $conexion->query($consulta);
+
+                    while($fila=$resultado->fetch_assoc()){
+                        echo "<div class='col-md-12 row'>";
+              
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' name='editNombre'  readonly value=". $fila['nombreContacto']." > ";
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' name='editCargo'  readonly value=". $fila['emailContacto']." > ";
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' name='editEmail'  readonly value=". $fila['cargo']." > ";
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' name='editTlf'  readonly value=". $fila['telefonoContacto']." > ";
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' name='editTipo'  readonly value=". $fila['tipoContacto']." > ";
+                            echo "<input type='hidden' name='idContacto'  value=". $fila['id']." > ";
+                            echo "<input type='submit' name='editarContacto'  value='Modificar' > ";
+                            
+                        echo "</div>";
+
+                    }
+                    $conexion->close();
+                    ?>
+</form>
+
+
+
+
+
+
+
+
+
   </section>
 
 
@@ -279,10 +323,6 @@ include("menu.php");
 
 
 
-
-<?php
-  require_once("../controlador/editarCliente.php");
-?>
 
 
 

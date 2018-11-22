@@ -45,7 +45,7 @@ require ("../modelo/connect.php");
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
           <div class="modal-content">
             <div class="modal-body">
-              El Usuario fue registrado con exito
+              El Vendedor fue registrado con exito
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
@@ -62,7 +62,7 @@ require ("../modelo/connect.php");
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
           <div class="modal-content">
             <div class="modal-body">
-            El Usuario no fue registrado por favor consulte con el administrador
+            El Vendedor no fue registrado por favor consulte con el administrador
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarVentana()">Close</button>
@@ -88,19 +88,29 @@ require ("../modelo/connect.php");
 
          if(isset($_POST['cliente']))
          {
+          require ("../modelo/connect.php");
            $cliente=$_POST['cliente'];
            for($i=0; $i<sizeof($cliente); ++$i){
 
             $clienteName = $cliente[$i];
         
              $clienteName;
+
+             $sql = "SELECT * FROM usuarios WHERE cliente='$clienteName'";
+              $resultado = $conexion->query($sql);
+              $fila=$resultado->fetch_assoc();
+                
+                  $clienteId =$fila['id'];
+                  $email =$fila['emailCliente'];
+                  $pais =$fila['pais'];
         
             $registrarVendedor = "INSERT INTO vendedorcliente VALUES (
               '',
               '$vendedorId',
               '$clienteName',
-              '',
-              ''
+              '$clienteId',
+              '$email',
+              '$pais'
               )";
             $registroVendedor = $conexion->query($registrarVendedor);
         
@@ -108,6 +118,7 @@ require ("../modelo/connect.php");
 
            
          }
+         /*
          else{
             $cliente="vendedor sin clientes";
 
@@ -120,6 +131,7 @@ require ("../modelo/connect.php");
             )";
           $registroVendedor = $conexion->query($registrarVendedor);
          }
+         */
        
 
  

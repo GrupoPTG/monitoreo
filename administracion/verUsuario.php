@@ -78,6 +78,7 @@ $fila=$resultado->fetch_assoc();
      $cliente =$fila['cliente'];
      $email =$fila['emailCliente'];
      $pass =$fila['pass'];
+     $user =$fila['usuario'];
      $direccion =$fila['direccion'];
      $pais =$fila['pais'];
      $idioma =$fila['idioma'];
@@ -99,6 +100,10 @@ $fila=$resultado->fetch_assoc();
                 <div class="input-group mb-3">
                     <span class="client-span">Cliente:</span>
                     <input  value="<?php echo $cliente   ?>"  class="form-control" readonly>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="client-span">Usuario:</span>
+                    <input  value="<?php echo $user   ?>"  class="form-control" readonly>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -131,6 +136,10 @@ $fila=$resultado->fetch_assoc();
                     <input  value="<?php echo $email   ?>"  class="form-control" readonly>
                 </div>
                 <div class="input-group mb-3">
+                    <span class="client-span">Clave:</span>
+                    <input  value="<?php echo $pass   ?>"  class="form-control" readonly>
+                </div>
+                <div class="input-group mb-3">
                     <span class="client-span">Dirección:</span>
                     <textarea class="form-control hgarea" type="text" style="height: auto;"  required readonly><?php echo $direccion   ?></textarea>
                 </div>
@@ -154,6 +163,7 @@ $fila=$resultado->fetch_assoc();
                             echo "<input class='form-control col-md-3' style='margin: 10px 0;' placeholder='Cargo'  readonly value=". $fila['cargo']." > ";
                             echo "<input class='form-control col-md-3' style='margin: 10px 0;' placeholder='Email'  readonly value=". $fila['emailContacto']." > ";
                             echo "<input class='form-control col-md-3' style='margin: 10px 0;' placeholder='Teléfono'  readonly value=". $fila['telefonoContacto']." > ";
+                            echo "<input class='form-control col-md-3' style='margin: 10px 0;' placeholder='Teléfono'  readonly value=". $fila['tipoContacto']." > ";
                             
                         echo "</div>";
 
